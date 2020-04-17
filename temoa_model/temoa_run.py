@@ -376,7 +376,7 @@ class TemoaSolverInstance(object):
 				SE.write( '\r[%8.2f\n' % duration() )
 				self.txt_file.write( '[%8.2f]\n' % duration() )
 				yield formatted_results.getvalue() + '\n'
-				SO.write( formatted_results.getvalue() )
+				#SO.write( formatted_results.getvalue() )
 				self.txt_file.write( formatted_results.getvalue() )
 			else:
 				yield '\r---------- Not solving: no available solver\n'
