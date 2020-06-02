@@ -43,14 +43,25 @@ CREATE TABLE time_periods (
   t_periods integer primary key,
   flag text,
   FOREIGN KEY(flag) REFERENCES time_period_labels(t_period_labels));  
-
+INSERT INTO "time_periods" VALUES(1980,'e');
+INSERT INTO "time_periods" VALUES(1990,'e');
+INSERT INTO "time_periods" VALUES(2000,'e');
+INSERT INTO "time_periods" VALUES(2010,'e');
+INSERT INTO "time_periods" VALUES(2020,'f');
+INSERT INTO "time_periods" VALUES(2030,'f');
+INSERT INTO "time_periods" VALUES(2040,'f');
+INSERT INTO "time_periods" VALUES(2050,'f');
 
 CREATE TABLE time_season (
   t_season text primary key );
-
+INSERT INTO "time_season" VALUES('inter');
+INSERT INTO "time_season" VALUES('summer');
+INSERT INTO "time_season" VALUES('winter');
 
 CREATE TABLE time_of_day (
   t_day text primary key );
+INSERT INTO "time_of_day" VALUES('day');
+INSERT INTO "time_of_day" VALUES('night');
 
 
 CREATE TABLE technologies (
