@@ -72,6 +72,25 @@ CREATE TABLE technologies (
   tech_category text,
   FOREIGN KEY(flag) REFERENCES technology_labels(tech_labels),
   FOREIGN KEY(sector) REFERENCES sector_labels(sector));
+INSERT INTO "technologies" VALUES('IMPDSL1','r','supply',' imported diesel','petroleum');
+INSERT INTO "technologies" VALUES('IMPGSL1','r','supply',' imported gasoline','petroleum');
+INSERT INTO "technologies" VALUES('IMPHCO1','r','supply',' imported coal','coal');
+INSERT INTO "technologies" VALUES('IMPOIL1','r','supply',' imported crude oil','petroleum');
+INSERT INTO "technologies" VALUES('IMPURN1','r','supply',' imported uranium','uranium');
+INSERT INTO "technologies" VALUES('IMPFEQ','r','supply',' imported fossil equivalent','');
+INSERT INTO "technologies" VALUES('IMPHYD','r','supply',' imported water -- doesnt exist in Utopia','water');
+INSERT INTO "technologies" VALUES('E01','pb','electric',' coal power plant','coal');
+INSERT INTO "technologies" VALUES('E21','pb','electric',' nuclear power plant','nuclear');
+INSERT INTO "technologies" VALUES('E31','pb','electric',' hydro power','hydro');
+INSERT INTO "technologies" VALUES('E51','ps','electric',' electric storage','storage');
+INSERT INTO "technologies" VALUES('E70','p','electric',' diesel power plant','diesel');
+INSERT INTO "technologies" VALUES('RHE','p','residential',' electric residential heating','electric');
+INSERT INTO "technologies" VALUES('RHO','p','residential',' diesel residential heating','diesel');
+INSERT INTO "technologies" VALUES('RL1','p','residential',' residential lighting','electric');
+INSERT INTO "technologies" VALUES('SRE','p','supply',' crude oil processor','petroleum');
+INSERT INTO "technologies" VALUES('TXD','p','transport',' diesel powered vehicles','diesel');
+INSERT INTO "technologies" VALUES('TXE','p','transport',' electric powered vehicles','electric');
+INSERT INTO "technologies" VALUES('TXG','p','transport',' gasoline powered vehicles','gasoline');
 
 
 CREATE TABLE commodities (
@@ -79,7 +98,20 @@ CREATE TABLE commodities (
   flag text,  
   comm_desc text,
   FOREIGN KEY(flag) REFERENCES commodity_labels(comm_labels));
-
+INSERT INTO "commodities" VALUES('ethos','p','# dummy commodity to supply inputs (makes graph easier to read)');
+INSERT INTO "commodities" VALUES('DSL','p','# diesel');
+INSERT INTO "commodities" VALUES('ELC','p','# electricity');
+INSERT INTO "commodities" VALUES('FEQ','p','# fossil equivalent');
+INSERT INTO "commodities" VALUES('GSL','p','# gasoline');
+INSERT INTO "commodities" VALUES('HCO','p','# coal');
+INSERT INTO "commodities" VALUES('HYD','p','# water');
+INSERT INTO "commodities" VALUES('OIL','p','# crude oil');
+INSERT INTO "commodities" VALUES('URN','p','# uranium');
+INSERT INTO "commodities" VALUES('co2','e','#CO2 emissions');
+INSERT INTO "commodities" VALUES('nox','e','#NOX emissions');
+INSERT INTO "commodities" VALUES('RH','d','# residential heating');
+INSERT INTO "commodities" VALUES('RL','d','# residential lighting');
+INSERT INTO "commodities" VALUES('TX','d','# transportation');
 
 /*
 -------------------------------------------------------
@@ -96,7 +128,12 @@ CREATE TABLE SegFrac (
    PRIMARY KEY(season_name, time_of_day_name), --here's where I define primary key as a combo of columns
    FOREIGN KEY(season_name) REFERENCES time_season(t_season),
    FOREIGN KEY(time_of_day_name) REFERENCES time_of_day(t_day) );
-
+INSERT INTO "SegFrac" VALUES('inter','day',0.1667,'# I-D');
+INSERT INTO "SegFrac" VALUES('inter','night',0.0833,'# I-N');
+INSERT INTO "SegFrac" VALUES('summer','day',0.1667,'# S-D');
+INSERT INTO "SegFrac" VALUES('summer','night',0.0833,'# S-N');
+INSERT INTO "SegFrac" VALUES('winter','day',0.3333,'# W-D');
+INSERT INTO "SegFrac" VALUES('winter','night',0.1667,'# W-N');
 	
 CREATE TABLE DemandSpecificDistribution (
    season_name text,
@@ -108,18 +145,38 @@ CREATE TABLE DemandSpecificDistribution (
    FOREIGN KEY(season_name) REFERENCES time_season(t_season),
    FOREIGN KEY(time_of_day_name) REFERENCES time_of_day(t_day), 
    FOREIGN KEY(demand_name) REFERENCES commodities(comm_name) );
-
+INSERT INTO "DemandSpecificDistribution" VALUES('inter','day','RH',.12,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('inter','night','RH',.06,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('winter','day','RH',.5467,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('winter','night','RH',.2733,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('inter','day','RL',.15,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('inter','night','RL',.05,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('summer','day','RL',.15,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('summer','night','RL',.05,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('winter','day','RL',.50,'');
+INSERT INTO "DemandSpecificDistribution" VALUES('winter','night','RL',.10,'');
 
 CREATE TABLE CapacityToActivity (
    tech text primary key,
    c2a real,
    c2a_notes,
    FOREIGN KEY(tech) REFERENCES technologies(tech) );
-
+INSERT INTO "CapacityToActivity" VALUES('E01',31.54,'');
+INSERT INTO "CapacityToActivity" VALUES('E21',31.54,'');
+INSERT INTO "CapacityToActivity" VALUES('E31',31.54,'');
+INSERT INTO "CapacityToActivity" VALUES('E51',31.54,'');
+INSERT INTO "CapacityToActivity" VALUES('E70',31.54,'');
+INSERT INTO "CapacityToActivity" VALUES('RHE',1,'');
+INSERT INTO "CapacityToActivity" VALUES('RHO',1,'');
+INSERT INTO "CapacityToActivity" VALUES('RL1',1,'');
+INSERT INTO "CapacityToActivity" VALUES('SRE',1,'');
+INSERT INTO "CapacityToActivity" VALUES('TXD',1,'');
+INSERT INTO "CapacityToActivity" VALUES('TXE',1,'');
+INSERT INTO "CapacityToActivity" VALUES('TXG',1,'');
 
 CREATE TABLE GlobalDiscountRate (
    rate real );
-
+INSERT INTO "GlobalDiscountRate" VALUES(0.10);
 
 CREATE TABLE DiscountRate (
    tech text,
@@ -130,7 +187,9 @@ CREATE TABLE DiscountRate (
    FOREIGN KEY(tech) REFERENCES technologies(tech),
    FOREIGN KEY(vintage) REFERENCES time_periods(t_periods));
 
-
+/*
+EmmisionActivity - requires data
+*/
 CREATE TABLE EmissionActivity  (
    emis_comm text,
    input_comm text,
