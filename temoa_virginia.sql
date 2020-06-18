@@ -314,6 +314,25 @@ CREATE TABLE  LifetimeTech (
    life_notes text,
    PRIMARY KEY(tech),
    FOREIGN KEY(tech) REFERENCES technologies(tech) );
+INSERT INTO "LifetimeTech" VALUES('E01',40,'');
+INSERT INTO "LifetimeTech" VALUES('E21',40,'');
+INSERT INTO "LifetimeTech" VALUES('E31',100,'');
+INSERT INTO "LifetimeTech" VALUES('E51',100,'');
+INSERT INTO "LifetimeTech" VALUES('E70',40,'');
+INSERT INTO "LifetimeTech" VALUES('RHE',30,'');
+INSERT INTO "LifetimeTech" VALUES('RHO',30,'');
+INSERT INTO "LifetimeTech" VALUES('RL1',10,'');
+INSERT INTO "LifetimeTech" VALUES('SRE',50,'');
+INSERT INTO "LifetimeTech" VALUES('TXD',15,'');
+INSERT INTO "LifetimeTech" VALUES('TXE',15,'');
+INSERT INTO "LifetimeTech" VALUES('TXG',15,'');
+INSERT INTO "LifetimeTech" VALUES('IMPDSL1',1000,'');
+INSERT INTO "LifetimeTech" VALUES('IMPGSL1',1000,'');
+INSERT INTO "LifetimeTech" VALUES('IMPHCO1',1000,'');
+INSERT INTO "LifetimeTech" VALUES('IMPOIL1',1000,'');
+INSERT INTO "LifetimeTech" VALUES('IMPURN1',1000,'');
+INSERT INTO "LifetimeTech" VALUES('IMPHYD',1000,'');
+INSERT INTO "LifetimeTech" VALUES('IMPFEQ',1000,'');
 	
 
 CREATE TABLE LifetimeProcess (
