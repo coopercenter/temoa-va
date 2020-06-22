@@ -91,6 +91,8 @@ INSERT INTO "technologies" VALUES('SRE','p','supply',' crude oil processor','pet
 INSERT INTO "technologies" VALUES('TXD','p','transport',' diesel powered vehicles','diesel');
 INSERT INTO "technologies" VALUES('TXE','p','transport',' electric powered vehicles','electric');
 INSERT INTO "technologies" VALUES('TXG','p','transport',' gasoline powered vehicles','gasoline');
+INSERT INTO "technologies" VALUES('TXG','p','transport',' gasoline powered vehicles','gasoline');
+INSERT INTO "naturla "
 
 
 CREATE TABLE commodities (

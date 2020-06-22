@@ -6,7 +6,7 @@ import temoatools as tt
 # ===============
 
 onlySimple = False
-folder = '/anaconda3/databases'
+folder = '/Users/rogerzhu/Documents/temoa/temoa-va/baselines/databases'
 dbs = ["A.sqlite", "B.sqlite", "C.sqlite", "D.sqlite", "E.sqlite", "F.sqlite"]
 
 createPlots = 'Y'  # Create default plots
