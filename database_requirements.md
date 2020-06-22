@@ -33,6 +33,6 @@ Electricity Demand (sales data)
 eia_elec_sales_va_all_m (millionkilowatthours)
 
 Technologies and Commodities
-There are two categories of energy generation technologies used in the construction of the input dataset for North Carolina: residual (or existing) technologies, and future technologies.
+There are two categories of energy generation technologies used in the construction of the input dataset for Virginia: residual (or existing) technologies, and future technologies.
 Capacity of residual tecnologies in Viginia (2018)
 capacity_factors_annual 
