@@ -1,0 +1,15 @@
+,database,scenario,fuelOrTech,2016,2021,2026,2031,2036
+0,A.sqlite,solve,EC_BATT,0.0,0.0,0.0,0.0,0.0
+1,A.sqlite,solve,EC_NG_CC,0.0,2.1204945,2.1837342,2.2156833,2.616102
+2,A.sqlite,solve,EC_NG_OC,0.0,0.0,0.0,0.0,0.0
+3,A.sqlite,solve,EX_COAL,0.454,0.454,0.454,0.454,0.454
+4,A.sqlite,solve,EX_DSL_CC,1.032,0.9728,0.44,0.44,0.44
+5,A.sqlite,solve,EX_DSL_SIMP,0.8455,0.6187,0.4675,0.4675,0.4675
+6,A.sqlite,solve,EX_HYDRO,0.1,0.1027,0.1027,0.1027,0.1027
+7,A.sqlite,solve,EX_MSW_LF,0.0024,0.0024,0.0024,0.0024,0.0024
+8,A.sqlite,solve,EX_NG_CC,0.507,0.507,0.507,0.507,0.507
+9,A.sqlite,solve,EX_OIL_TYPE1,0.9,0.9,0.0,0.0,0.0
+10,A.sqlite,solve,EX_OIL_TYPE2,0.99,0.973,0.837,0.656,0.082
+11,A.sqlite,solve,EX_OIL_TYPE3,1.002,0.934,0.732,0.1296,0.0
+12,A.sqlite,solve,EX_SOLPV,0.0521,0.0521,0.0521,0.0521,0.0521
+13,A.sqlite,solve,EX_WIND,0.102,0.102,0.102,0.102,0.102
