@@ -15,7 +15,7 @@ debug = False
 # Format for inputs, format is name and number of associated entries
 inputTables = [("representativeDays", 2), ("timesOfDay", 2), ("Connections", 11), ("ConnectionsExisting", 4),
                ("Demand", 4), ("DiscountRate", 2), ("Fuels", 12), ("FuelsExisting", 4), ("PowerPlants", 7),
-               ("PowerPlantsPerformance", 9), ("PowerPlantsCosts", 7), ("PowerPlantsConstraints", 7),
+               ("PowerPlantsPerformance", 9), ("PowerPlantsCosts", 7), ("PowerPlantsConstraints", 9),
                ("PowerPlantsExisting", 4), ("ReserveMargin", 2), ("capacityFactorTOD", 5), ("ref", 6)]
 
 # Format for local, names only
@@ -31,7 +31,7 @@ temoaTables = [('commodities', 3), ('technologies', 5), ('tech_baseload', 1),
                ('CostVariable', 6), ('Demand', 5), ('DemandSpecificDistribution', 5),
                ('Efficiency', 6), ('EmissionActivity', 8),
                ('ExistingCapacity', 5), ('LifetimeLoanTech', 3), ('LifetimeTech', 3),
-               ('MaxCapacity', 5), ('MaxActivity', 5),
+               ('MaxCapacity', 5), ('MinCapacity', 5), ('MaxActivity', 5),
                ('GlobalDiscountRate', 1), ('GrowthRateMax', 3), ('GrowthRateSeed', 4),
                ('RampUp', 2), ('RampDown', 2), ('ReserveMargin', 2), ('SegFrac', 4),
                ('MinGenGroupOfTechnologies_Data', 3), ('MinGenGroupOfTechnologies', 4), ('CapacityCredit', 2)]
@@ -393,6 +393,8 @@ def processPowerPlants(inputs, local, outputs):
         # Constraints
         tech['max_capacity'] = inputs['PowerPlantsConstraints'].loc[
                                    techType, 'MaxCapacity'] / 1000.0  # Convert from MW to GW
+        tech['min_capacity'] = inputs['PowerPlantsConstraints'].loc[
+                                   techType, 'MinCapacity'] / 1000.0  # Convert from MW to GW
         tech['max_activity'] = inputs['PowerPlantsConstraints'].loc[techType, 'MaxActivity']
         tech['ramp_rate'] = inputs['PowerPlantsConstraints'].loc[techType, 'RampRate']
         tech['Retirement'] = None
@@ -710,6 +712,11 @@ def processTech(inputs, local, outputs, tech):
     if goodValue(tech['max_capacity']):
         for period in active_future_periods_con:
             outputs['MaxCapacity'].append((str(period), tech['name'], tech['max_capacity'], "GW", " "))
+    
+    # MinCapacity
+    if goodValue(tech['min_capacity']):
+        for period in active_future_periods_con:
+            outputs['MinCapacity'].append((str(period), tech['name'], tech['min_capacity'], "GW", " "))
 
     # MaxActivity (also used to enforce retirement)
     # Dual constraint
