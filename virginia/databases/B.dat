@@ -51,7 +51,6 @@ hr24
 ;
 
 set tech_resource := 
-IMPBIO
 IMPCOAL
 IMPDSL
 IMPHYDRO
@@ -77,18 +76,9 @@ EX_SOLPV
 EX_NUCLEAR
 EX_WIND
 EC_BATT
-EC_BIO
-EC_COAL
-EC_DSL_CC
-EC_OIL_CC
-EC_NG_CC
-EC_NG_OC
 EC_SOLPV
 EC_WIND
 ED_BATT
-ED_BIO
-ED_NG_CC
-ED_NG_OC
 ED_SOLPV
 ED_WIND
 TRANS
@@ -116,16 +106,10 @@ EX_OIL_TYPE1
 EX_OIL_TYPE2
 EX_OIL_TYPE3
 EX_NUCLEAR
-EC_COAL
-EC_DSL_CC
-EC_OIL_CC
-EC_NG_CC
-ED_NG_CC
 ;
 
 set commodity_physical := 
 ethos
-BIO
 COAL
 DSL
 HYDRO
@@ -271,21 +255,11 @@ param CapacityToActivity :=
     EX_NUCLEAR         31.54    
     EX_WIND         31.54    
     EC_BATT         31.54    
-    EC_BIO         31.54    
-    EC_COAL         31.54    
-    EC_DSL_CC         31.54    
-    EC_OIL_CC         31.54    
-    EC_NG_CC         31.54    
-    EC_NG_OC         31.54    
     EC_SOLPV         31.54    
     EC_WIND         31.54    
     ED_BATT         31.54    
-    ED_BIO         31.54    
-    ED_NG_CC         31.54    
-    ED_NG_OC         31.54    
     ED_SOLPV         31.54    
     ED_WIND         31.54    
-    IMPBIO         31.54    
     IMPCOAL         31.54    
     IMPDSL         31.54    
     IMPHYDRO         31.54    
@@ -312,13 +286,6 @@ param GlobalDiscountRate :=
 ;
 
 param EmissionActivity := 
-    CO2             ethos             IMPBIO         2016         BIO         0.0    
-    CO2             ethos             IMPBIO         2021         BIO         0.0    
-    CO2             ethos             IMPBIO         2026         BIO         0.0    
-    CO2             ethos             IMPBIO         2031         BIO         0.0    
-    CO2             ethos             IMPBIO         2036         BIO         0.0    
-    CO2             ethos             IMPBIO         2041         BIO         0.0    
-    CO2             ethos             IMPBIO         2046         BIO         0.0    
     CO2             ethos             IMPCOAL         2016         COAL         90.37    
     CO2             ethos             IMPCOAL         2021         COAL         90.37    
     CO2             ethos             IMPCOAL         2026         COAL         90.37    
@@ -382,18 +349,6 @@ param MaxCapacity :=
 2036         EX_NUCLEAR         3.568    
 2041         EX_NUCLEAR         3.568    
 2046         EX_NUCLEAR         3.568    
-2021         EC_BIO         0.29    
-2026         EC_BIO         0.29    
-2031         EC_BIO         0.29    
-2036         EC_BIO         0.29    
-2041         EC_BIO         0.29    
-2046         EC_BIO         0.29    
-2021         ED_BIO         0.29    
-2026         ED_BIO         0.29    
-2031         ED_BIO         0.29    
-2036         ED_BIO         0.29    
-2041         ED_BIO         0.29    
-2046         ED_BIO         0.29    
 ;
 
 param MaxActivity := 
@@ -437,21 +392,11 @@ param LifetimeTech :=
     EX_NUCLEAR         50.0    
     EX_WIND         30.0    
     EC_BATT         15.0    
-    EC_BIO         45.0    
-    EC_COAL         75.0    
-    EC_DSL_CC         55.0    
-    EC_OIL_CC         55.0    
-    EC_NG_CC         55.0    
-    EC_NG_OC         55.0    
     EC_SOLPV         30.0    
     EC_WIND         30.0    
     ED_BATT         15.0    
-    ED_BIO         45.0    
-    ED_NG_CC         55.0    
-    ED_NG_OC         55.0    
     ED_SOLPV         30.0    
     ED_WIND         30.0    
-    IMPBIO         50.0    
     IMPCOAL         50.0    
     IMPDSL         50.0    
     IMPHYDRO         50.0    
@@ -487,21 +432,11 @@ param LifetimeLoanTech :=
     EX_NUCLEAR         30.0    
     EX_WIND         30.0    
     EC_BATT         15.0    
-    EC_BIO         30.0    
-    EC_COAL         30.0    
-    EC_DSL_CC         30.0    
-    EC_OIL_CC         30.0    
-    EC_NG_CC         30.0    
-    EC_NG_OC         30.0    
     EC_SOLPV         30.0    
     EC_WIND         30.0    
     ED_BATT         15.0    
-    ED_BIO         30.0    
-    ED_NG_CC         30.0    
-    ED_NG_OC         30.0    
     ED_SOLPV         30.0    
     ED_WIND         30.0    
-    IMPBIO         30.0    
     IMPCOAL         30.0    
     IMPDSL         30.0    
     IMPHYDRO         30.0    
@@ -1148,294 +1083,6 @@ param CapacityFactorTech :=
     offpeak             hr22             EC_BATT         0.5    
     offpeak             hr23             EC_BATT         0.5    
     offpeak             hr24             EC_BATT         0.5    
-    peak             hr01             EC_BIO         0.56    
-    peak             hr02             EC_BIO         0.56    
-    peak             hr03             EC_BIO         0.56    
-    peak             hr04             EC_BIO         0.56    
-    peak             hr05             EC_BIO         0.56    
-    peak             hr06             EC_BIO         0.56    
-    peak             hr07             EC_BIO         0.56    
-    peak             hr08             EC_BIO         0.56    
-    peak             hr09             EC_BIO         0.56    
-    peak             hr10             EC_BIO         0.56    
-    peak             hr11             EC_BIO         0.56    
-    peak             hr12             EC_BIO         0.56    
-    peak             hr13             EC_BIO         0.56    
-    peak             hr14             EC_BIO         0.56    
-    peak             hr15             EC_BIO         0.56    
-    peak             hr16             EC_BIO         0.56    
-    peak             hr17             EC_BIO         0.56    
-    peak             hr18             EC_BIO         0.56    
-    peak             hr19             EC_BIO         0.56    
-    peak             hr20             EC_BIO         0.56    
-    peak             hr21             EC_BIO         0.56    
-    peak             hr22             EC_BIO         0.56    
-    peak             hr23             EC_BIO         0.56    
-    peak             hr24             EC_BIO         0.56    
-    offpeak             hr01             EC_BIO         0.56    
-    offpeak             hr02             EC_BIO         0.56    
-    offpeak             hr03             EC_BIO         0.56    
-    offpeak             hr04             EC_BIO         0.56    
-    offpeak             hr05             EC_BIO         0.56    
-    offpeak             hr06             EC_BIO         0.56    
-    offpeak             hr07             EC_BIO         0.56    
-    offpeak             hr08             EC_BIO         0.56    
-    offpeak             hr09             EC_BIO         0.56    
-    offpeak             hr10             EC_BIO         0.56    
-    offpeak             hr11             EC_BIO         0.56    
-    offpeak             hr12             EC_BIO         0.56    
-    offpeak             hr13             EC_BIO         0.56    
-    offpeak             hr14             EC_BIO         0.56    
-    offpeak             hr15             EC_BIO         0.56    
-    offpeak             hr16             EC_BIO         0.56    
-    offpeak             hr17             EC_BIO         0.56    
-    offpeak             hr18             EC_BIO         0.56    
-    offpeak             hr19             EC_BIO         0.56    
-    offpeak             hr20             EC_BIO         0.56    
-    offpeak             hr21             EC_BIO         0.56    
-    offpeak             hr22             EC_BIO         0.56    
-    offpeak             hr23             EC_BIO         0.56    
-    offpeak             hr24             EC_BIO         0.56    
-    peak             hr01             EC_COAL         0.85    
-    peak             hr02             EC_COAL         0.85    
-    peak             hr03             EC_COAL         0.85    
-    peak             hr04             EC_COAL         0.85    
-    peak             hr05             EC_COAL         0.85    
-    peak             hr06             EC_COAL         0.85    
-    peak             hr07             EC_COAL         0.85    
-    peak             hr08             EC_COAL         0.85    
-    peak             hr09             EC_COAL         0.85    
-    peak             hr10             EC_COAL         0.85    
-    peak             hr11             EC_COAL         0.85    
-    peak             hr12             EC_COAL         0.85    
-    peak             hr13             EC_COAL         0.85    
-    peak             hr14             EC_COAL         0.85    
-    peak             hr15             EC_COAL         0.85    
-    peak             hr16             EC_COAL         0.85    
-    peak             hr17             EC_COAL         0.85    
-    peak             hr18             EC_COAL         0.85    
-    peak             hr19             EC_COAL         0.85    
-    peak             hr20             EC_COAL         0.85    
-    peak             hr21             EC_COAL         0.85    
-    peak             hr22             EC_COAL         0.85    
-    peak             hr23             EC_COAL         0.85    
-    peak             hr24             EC_COAL         0.85    
-    offpeak             hr01             EC_COAL         0.85    
-    offpeak             hr02             EC_COAL         0.85    
-    offpeak             hr03             EC_COAL         0.85    
-    offpeak             hr04             EC_COAL         0.85    
-    offpeak             hr05             EC_COAL         0.85    
-    offpeak             hr06             EC_COAL         0.85    
-    offpeak             hr07             EC_COAL         0.85    
-    offpeak             hr08             EC_COAL         0.85    
-    offpeak             hr09             EC_COAL         0.85    
-    offpeak             hr10             EC_COAL         0.85    
-    offpeak             hr11             EC_COAL         0.85    
-    offpeak             hr12             EC_COAL         0.85    
-    offpeak             hr13             EC_COAL         0.85    
-    offpeak             hr14             EC_COAL         0.85    
-    offpeak             hr15             EC_COAL         0.85    
-    offpeak             hr16             EC_COAL         0.85    
-    offpeak             hr17             EC_COAL         0.85    
-    offpeak             hr18             EC_COAL         0.85    
-    offpeak             hr19             EC_COAL         0.85    
-    offpeak             hr20             EC_COAL         0.85    
-    offpeak             hr21             EC_COAL         0.85    
-    offpeak             hr22             EC_COAL         0.85    
-    offpeak             hr23             EC_COAL         0.85    
-    offpeak             hr24             EC_COAL         0.85    
-    peak             hr01             EC_DSL_CC         0.87    
-    peak             hr02             EC_DSL_CC         0.87    
-    peak             hr03             EC_DSL_CC         0.87    
-    peak             hr04             EC_DSL_CC         0.87    
-    peak             hr05             EC_DSL_CC         0.87    
-    peak             hr06             EC_DSL_CC         0.87    
-    peak             hr07             EC_DSL_CC         0.87    
-    peak             hr08             EC_DSL_CC         0.87    
-    peak             hr09             EC_DSL_CC         0.87    
-    peak             hr10             EC_DSL_CC         0.87    
-    peak             hr11             EC_DSL_CC         0.87    
-    peak             hr12             EC_DSL_CC         0.87    
-    peak             hr13             EC_DSL_CC         0.87    
-    peak             hr14             EC_DSL_CC         0.87    
-    peak             hr15             EC_DSL_CC         0.87    
-    peak             hr16             EC_DSL_CC         0.87    
-    peak             hr17             EC_DSL_CC         0.87    
-    peak             hr18             EC_DSL_CC         0.87    
-    peak             hr19             EC_DSL_CC         0.87    
-    peak             hr20             EC_DSL_CC         0.87    
-    peak             hr21             EC_DSL_CC         0.87    
-    peak             hr22             EC_DSL_CC         0.87    
-    peak             hr23             EC_DSL_CC         0.87    
-    peak             hr24             EC_DSL_CC         0.87    
-    offpeak             hr01             EC_DSL_CC         0.87    
-    offpeak             hr02             EC_DSL_CC         0.87    
-    offpeak             hr03             EC_DSL_CC         0.87    
-    offpeak             hr04             EC_DSL_CC         0.87    
-    offpeak             hr05             EC_DSL_CC         0.87    
-    offpeak             hr06             EC_DSL_CC         0.87    
-    offpeak             hr07             EC_DSL_CC         0.87    
-    offpeak             hr08             EC_DSL_CC         0.87    
-    offpeak             hr09             EC_DSL_CC         0.87    
-    offpeak             hr10             EC_DSL_CC         0.87    
-    offpeak             hr11             EC_DSL_CC         0.87    
-    offpeak             hr12             EC_DSL_CC         0.87    
-    offpeak             hr13             EC_DSL_CC         0.87    
-    offpeak             hr14             EC_DSL_CC         0.87    
-    offpeak             hr15             EC_DSL_CC         0.87    
-    offpeak             hr16             EC_DSL_CC         0.87    
-    offpeak             hr17             EC_DSL_CC         0.87    
-    offpeak             hr18             EC_DSL_CC         0.87    
-    offpeak             hr19             EC_DSL_CC         0.87    
-    offpeak             hr20             EC_DSL_CC         0.87    
-    offpeak             hr21             EC_DSL_CC         0.87    
-    offpeak             hr22             EC_DSL_CC         0.87    
-    offpeak             hr23             EC_DSL_CC         0.87    
-    offpeak             hr24             EC_DSL_CC         0.87    
-    peak             hr01             EC_OIL_CC         0.87    
-    peak             hr02             EC_OIL_CC         0.87    
-    peak             hr03             EC_OIL_CC         0.87    
-    peak             hr04             EC_OIL_CC         0.87    
-    peak             hr05             EC_OIL_CC         0.87    
-    peak             hr06             EC_OIL_CC         0.87    
-    peak             hr07             EC_OIL_CC         0.87    
-    peak             hr08             EC_OIL_CC         0.87    
-    peak             hr09             EC_OIL_CC         0.87    
-    peak             hr10             EC_OIL_CC         0.87    
-    peak             hr11             EC_OIL_CC         0.87    
-    peak             hr12             EC_OIL_CC         0.87    
-    peak             hr13             EC_OIL_CC         0.87    
-    peak             hr14             EC_OIL_CC         0.87    
-    peak             hr15             EC_OIL_CC         0.87    
-    peak             hr16             EC_OIL_CC         0.87    
-    peak             hr17             EC_OIL_CC         0.87    
-    peak             hr18             EC_OIL_CC         0.87    
-    peak             hr19             EC_OIL_CC         0.87    
-    peak             hr20             EC_OIL_CC         0.87    
-    peak             hr21             EC_OIL_CC         0.87    
-    peak             hr22             EC_OIL_CC         0.87    
-    peak             hr23             EC_OIL_CC         0.87    
-    peak             hr24             EC_OIL_CC         0.87    
-    offpeak             hr01             EC_OIL_CC         0.87    
-    offpeak             hr02             EC_OIL_CC         0.87    
-    offpeak             hr03             EC_OIL_CC         0.87    
-    offpeak             hr04             EC_OIL_CC         0.87    
-    offpeak             hr05             EC_OIL_CC         0.87    
-    offpeak             hr06             EC_OIL_CC         0.87    
-    offpeak             hr07             EC_OIL_CC         0.87    
-    offpeak             hr08             EC_OIL_CC         0.87    
-    offpeak             hr09             EC_OIL_CC         0.87    
-    offpeak             hr10             EC_OIL_CC         0.87    
-    offpeak             hr11             EC_OIL_CC         0.87    
-    offpeak             hr12             EC_OIL_CC         0.87    
-    offpeak             hr13             EC_OIL_CC         0.87    
-    offpeak             hr14             EC_OIL_CC         0.87    
-    offpeak             hr15             EC_OIL_CC         0.87    
-    offpeak             hr16             EC_OIL_CC         0.87    
-    offpeak             hr17             EC_OIL_CC         0.87    
-    offpeak             hr18             EC_OIL_CC         0.87    
-    offpeak             hr19             EC_OIL_CC         0.87    
-    offpeak             hr20             EC_OIL_CC         0.87    
-    offpeak             hr21             EC_OIL_CC         0.87    
-    offpeak             hr22             EC_OIL_CC         0.87    
-    offpeak             hr23             EC_OIL_CC         0.87    
-    offpeak             hr24             EC_OIL_CC         0.87    
-    peak             hr01             EC_NG_CC         0.87    
-    peak             hr02             EC_NG_CC         0.87    
-    peak             hr03             EC_NG_CC         0.87    
-    peak             hr04             EC_NG_CC         0.87    
-    peak             hr05             EC_NG_CC         0.87    
-    peak             hr06             EC_NG_CC         0.87    
-    peak             hr07             EC_NG_CC         0.87    
-    peak             hr08             EC_NG_CC         0.87    
-    peak             hr09             EC_NG_CC         0.87    
-    peak             hr10             EC_NG_CC         0.87    
-    peak             hr11             EC_NG_CC         0.87    
-    peak             hr12             EC_NG_CC         0.87    
-    peak             hr13             EC_NG_CC         0.87    
-    peak             hr14             EC_NG_CC         0.87    
-    peak             hr15             EC_NG_CC         0.87    
-    peak             hr16             EC_NG_CC         0.87    
-    peak             hr17             EC_NG_CC         0.87    
-    peak             hr18             EC_NG_CC         0.87    
-    peak             hr19             EC_NG_CC         0.87    
-    peak             hr20             EC_NG_CC         0.87    
-    peak             hr21             EC_NG_CC         0.87    
-    peak             hr22             EC_NG_CC         0.87    
-    peak             hr23             EC_NG_CC         0.87    
-    peak             hr24             EC_NG_CC         0.87    
-    offpeak             hr01             EC_NG_CC         0.87    
-    offpeak             hr02             EC_NG_CC         0.87    
-    offpeak             hr03             EC_NG_CC         0.87    
-    offpeak             hr04             EC_NG_CC         0.87    
-    offpeak             hr05             EC_NG_CC         0.87    
-    offpeak             hr06             EC_NG_CC         0.87    
-    offpeak             hr07             EC_NG_CC         0.87    
-    offpeak             hr08             EC_NG_CC         0.87    
-    offpeak             hr09             EC_NG_CC         0.87    
-    offpeak             hr10             EC_NG_CC         0.87    
-    offpeak             hr11             EC_NG_CC         0.87    
-    offpeak             hr12             EC_NG_CC         0.87    
-    offpeak             hr13             EC_NG_CC         0.87    
-    offpeak             hr14             EC_NG_CC         0.87    
-    offpeak             hr15             EC_NG_CC         0.87    
-    offpeak             hr16             EC_NG_CC         0.87    
-    offpeak             hr17             EC_NG_CC         0.87    
-    offpeak             hr18             EC_NG_CC         0.87    
-    offpeak             hr19             EC_NG_CC         0.87    
-    offpeak             hr20             EC_NG_CC         0.87    
-    offpeak             hr21             EC_NG_CC         0.87    
-    offpeak             hr22             EC_NG_CC         0.87    
-    offpeak             hr23             EC_NG_CC         0.87    
-    offpeak             hr24             EC_NG_CC         0.87    
-    peak             hr01             EC_NG_OC         0.3    
-    peak             hr02             EC_NG_OC         0.3    
-    peak             hr03             EC_NG_OC         0.3    
-    peak             hr04             EC_NG_OC         0.3    
-    peak             hr05             EC_NG_OC         0.3    
-    peak             hr06             EC_NG_OC         0.3    
-    peak             hr07             EC_NG_OC         0.3    
-    peak             hr08             EC_NG_OC         0.3    
-    peak             hr09             EC_NG_OC         0.3    
-    peak             hr10             EC_NG_OC         0.3    
-    peak             hr11             EC_NG_OC         0.3    
-    peak             hr12             EC_NG_OC         0.3    
-    peak             hr13             EC_NG_OC         0.3    
-    peak             hr14             EC_NG_OC         0.3    
-    peak             hr15             EC_NG_OC         0.3    
-    peak             hr16             EC_NG_OC         0.3    
-    peak             hr17             EC_NG_OC         0.3    
-    peak             hr18             EC_NG_OC         0.3    
-    peak             hr19             EC_NG_OC         0.3    
-    peak             hr20             EC_NG_OC         0.3    
-    peak             hr21             EC_NG_OC         0.3    
-    peak             hr22             EC_NG_OC         0.3    
-    peak             hr23             EC_NG_OC         0.3    
-    peak             hr24             EC_NG_OC         0.3    
-    offpeak             hr01             EC_NG_OC         0.3    
-    offpeak             hr02             EC_NG_OC         0.3    
-    offpeak             hr03             EC_NG_OC         0.3    
-    offpeak             hr04             EC_NG_OC         0.3    
-    offpeak             hr05             EC_NG_OC         0.3    
-    offpeak             hr06             EC_NG_OC         0.3    
-    offpeak             hr07             EC_NG_OC         0.3    
-    offpeak             hr08             EC_NG_OC         0.3    
-    offpeak             hr09             EC_NG_OC         0.3    
-    offpeak             hr10             EC_NG_OC         0.3    
-    offpeak             hr11             EC_NG_OC         0.3    
-    offpeak             hr12             EC_NG_OC         0.3    
-    offpeak             hr13             EC_NG_OC         0.3    
-    offpeak             hr14             EC_NG_OC         0.3    
-    offpeak             hr15             EC_NG_OC         0.3    
-    offpeak             hr16             EC_NG_OC         0.3    
-    offpeak             hr17             EC_NG_OC         0.3    
-    offpeak             hr18             EC_NG_OC         0.3    
-    offpeak             hr19             EC_NG_OC         0.3    
-    offpeak             hr20             EC_NG_OC         0.3    
-    offpeak             hr21             EC_NG_OC         0.3    
-    offpeak             hr22             EC_NG_OC         0.3    
-    offpeak             hr23             EC_NG_OC         0.3    
-    offpeak             hr24             EC_NG_OC         0.3    
     peak             hr01             EC_SOLPV         0.0    
     peak             hr02             EC_SOLPV         0.0    
     peak             hr03             EC_SOLPV         0.0    
@@ -1580,150 +1227,6 @@ param CapacityFactorTech :=
     offpeak             hr22             ED_BATT         0.5    
     offpeak             hr23             ED_BATT         0.5    
     offpeak             hr24             ED_BATT         0.5    
-    peak             hr01             ED_BIO         0.56    
-    peak             hr02             ED_BIO         0.56    
-    peak             hr03             ED_BIO         0.56    
-    peak             hr04             ED_BIO         0.56    
-    peak             hr05             ED_BIO         0.56    
-    peak             hr06             ED_BIO         0.56    
-    peak             hr07             ED_BIO         0.56    
-    peak             hr08             ED_BIO         0.56    
-    peak             hr09             ED_BIO         0.56    
-    peak             hr10             ED_BIO         0.56    
-    peak             hr11             ED_BIO         0.56    
-    peak             hr12             ED_BIO         0.56    
-    peak             hr13             ED_BIO         0.56    
-    peak             hr14             ED_BIO         0.56    
-    peak             hr15             ED_BIO         0.56    
-    peak             hr16             ED_BIO         0.56    
-    peak             hr17             ED_BIO         0.56    
-    peak             hr18             ED_BIO         0.56    
-    peak             hr19             ED_BIO         0.56    
-    peak             hr20             ED_BIO         0.56    
-    peak             hr21             ED_BIO         0.56    
-    peak             hr22             ED_BIO         0.56    
-    peak             hr23             ED_BIO         0.56    
-    peak             hr24             ED_BIO         0.56    
-    offpeak             hr01             ED_BIO         0.56    
-    offpeak             hr02             ED_BIO         0.56    
-    offpeak             hr03             ED_BIO         0.56    
-    offpeak             hr04             ED_BIO         0.56    
-    offpeak             hr05             ED_BIO         0.56    
-    offpeak             hr06             ED_BIO         0.56    
-    offpeak             hr07             ED_BIO         0.56    
-    offpeak             hr08             ED_BIO         0.56    
-    offpeak             hr09             ED_BIO         0.56    
-    offpeak             hr10             ED_BIO         0.56    
-    offpeak             hr11             ED_BIO         0.56    
-    offpeak             hr12             ED_BIO         0.56    
-    offpeak             hr13             ED_BIO         0.56    
-    offpeak             hr14             ED_BIO         0.56    
-    offpeak             hr15             ED_BIO         0.56    
-    offpeak             hr16             ED_BIO         0.56    
-    offpeak             hr17             ED_BIO         0.56    
-    offpeak             hr18             ED_BIO         0.56    
-    offpeak             hr19             ED_BIO         0.56    
-    offpeak             hr20             ED_BIO         0.56    
-    offpeak             hr21             ED_BIO         0.56    
-    offpeak             hr22             ED_BIO         0.56    
-    offpeak             hr23             ED_BIO         0.56    
-    offpeak             hr24             ED_BIO         0.56    
-    peak             hr01             ED_NG_CC         0.87    
-    peak             hr02             ED_NG_CC         0.87    
-    peak             hr03             ED_NG_CC         0.87    
-    peak             hr04             ED_NG_CC         0.87    
-    peak             hr05             ED_NG_CC         0.87    
-    peak             hr06             ED_NG_CC         0.87    
-    peak             hr07             ED_NG_CC         0.87    
-    peak             hr08             ED_NG_CC         0.87    
-    peak             hr09             ED_NG_CC         0.87    
-    peak             hr10             ED_NG_CC         0.87    
-    peak             hr11             ED_NG_CC         0.87    
-    peak             hr12             ED_NG_CC         0.87    
-    peak             hr13             ED_NG_CC         0.87    
-    peak             hr14             ED_NG_CC         0.87    
-    peak             hr15             ED_NG_CC         0.87    
-    peak             hr16             ED_NG_CC         0.87    
-    peak             hr17             ED_NG_CC         0.87    
-    peak             hr18             ED_NG_CC         0.87    
-    peak             hr19             ED_NG_CC         0.87    
-    peak             hr20             ED_NG_CC         0.87    
-    peak             hr21             ED_NG_CC         0.87    
-    peak             hr22             ED_NG_CC         0.87    
-    peak             hr23             ED_NG_CC         0.87    
-    peak             hr24             ED_NG_CC         0.87    
-    offpeak             hr01             ED_NG_CC         0.87    
-    offpeak             hr02             ED_NG_CC         0.87    
-    offpeak             hr03             ED_NG_CC         0.87    
-    offpeak             hr04             ED_NG_CC         0.87    
-    offpeak             hr05             ED_NG_CC         0.87    
-    offpeak             hr06             ED_NG_CC         0.87    
-    offpeak             hr07             ED_NG_CC         0.87    
-    offpeak             hr08             ED_NG_CC         0.87    
-    offpeak             hr09             ED_NG_CC         0.87    
-    offpeak             hr10             ED_NG_CC         0.87    
-    offpeak             hr11             ED_NG_CC         0.87    
-    offpeak             hr12             ED_NG_CC         0.87    
-    offpeak             hr13             ED_NG_CC         0.87    
-    offpeak             hr14             ED_NG_CC         0.87    
-    offpeak             hr15             ED_NG_CC         0.87    
-    offpeak             hr16             ED_NG_CC         0.87    
-    offpeak             hr17             ED_NG_CC         0.87    
-    offpeak             hr18             ED_NG_CC         0.87    
-    offpeak             hr19             ED_NG_CC         0.87    
-    offpeak             hr20             ED_NG_CC         0.87    
-    offpeak             hr21             ED_NG_CC         0.87    
-    offpeak             hr22             ED_NG_CC         0.87    
-    offpeak             hr23             ED_NG_CC         0.87    
-    offpeak             hr24             ED_NG_CC         0.87    
-    peak             hr01             ED_NG_OC         0.3    
-    peak             hr02             ED_NG_OC         0.3    
-    peak             hr03             ED_NG_OC         0.3    
-    peak             hr04             ED_NG_OC         0.3    
-    peak             hr05             ED_NG_OC         0.3    
-    peak             hr06             ED_NG_OC         0.3    
-    peak             hr07             ED_NG_OC         0.3    
-    peak             hr08             ED_NG_OC         0.3    
-    peak             hr09             ED_NG_OC         0.3    
-    peak             hr10             ED_NG_OC         0.3    
-    peak             hr11             ED_NG_OC         0.3    
-    peak             hr12             ED_NG_OC         0.3    
-    peak             hr13             ED_NG_OC         0.3    
-    peak             hr14             ED_NG_OC         0.3    
-    peak             hr15             ED_NG_OC         0.3    
-    peak             hr16             ED_NG_OC         0.3    
-    peak             hr17             ED_NG_OC         0.3    
-    peak             hr18             ED_NG_OC         0.3    
-    peak             hr19             ED_NG_OC         0.3    
-    peak             hr20             ED_NG_OC         0.3    
-    peak             hr21             ED_NG_OC         0.3    
-    peak             hr22             ED_NG_OC         0.3    
-    peak             hr23             ED_NG_OC         0.3    
-    peak             hr24             ED_NG_OC         0.3    
-    offpeak             hr01             ED_NG_OC         0.3    
-    offpeak             hr02             ED_NG_OC         0.3    
-    offpeak             hr03             ED_NG_OC         0.3    
-    offpeak             hr04             ED_NG_OC         0.3    
-    offpeak             hr05             ED_NG_OC         0.3    
-    offpeak             hr06             ED_NG_OC         0.3    
-    offpeak             hr07             ED_NG_OC         0.3    
-    offpeak             hr08             ED_NG_OC         0.3    
-    offpeak             hr09             ED_NG_OC         0.3    
-    offpeak             hr10             ED_NG_OC         0.3    
-    offpeak             hr11             ED_NG_OC         0.3    
-    offpeak             hr12             ED_NG_OC         0.3    
-    offpeak             hr13             ED_NG_OC         0.3    
-    offpeak             hr14             ED_NG_OC         0.3    
-    offpeak             hr15             ED_NG_OC         0.3    
-    offpeak             hr16             ED_NG_OC         0.3    
-    offpeak             hr17             ED_NG_OC         0.3    
-    offpeak             hr18             ED_NG_OC         0.3    
-    offpeak             hr19             ED_NG_OC         0.3    
-    offpeak             hr20             ED_NG_OC         0.3    
-    offpeak             hr21             ED_NG_OC         0.3    
-    offpeak             hr22             ED_NG_OC         0.3    
-    offpeak             hr23             ED_NG_OC         0.3    
-    offpeak             hr24             ED_NG_OC         0.3    
     peak             hr01             ED_SOLPV         0.0    
     peak             hr02             ED_SOLPV         0.0    
     peak             hr03             ED_SOLPV         0.0    
@@ -1847,42 +1350,6 @@ param Efficiency :=
     ELC_CENTRAL             EC_BATT         2036         ELC_CENTRAL         0.85    
     ELC_CENTRAL             EC_BATT         2041         ELC_CENTRAL         0.85    
     ELC_CENTRAL             EC_BATT         2046         ELC_CENTRAL         0.85    
-    BIO             EC_BIO         2021         ELC_CENTRAL         0.253    
-    BIO             EC_BIO         2026         ELC_CENTRAL         0.253    
-    BIO             EC_BIO         2031         ELC_CENTRAL         0.253    
-    BIO             EC_BIO         2036         ELC_CENTRAL         0.253    
-    BIO             EC_BIO         2041         ELC_CENTRAL         0.253    
-    BIO             EC_BIO         2046         ELC_CENTRAL         0.253    
-    COAL_TAXED             EC_COAL         2021         ELC_CENTRAL         0.38799999999999996    
-    COAL_TAXED             EC_COAL         2026         ELC_CENTRAL         0.38799999999999996    
-    COAL_TAXED             EC_COAL         2031         ELC_CENTRAL         0.38799999999999996    
-    COAL_TAXED             EC_COAL         2036         ELC_CENTRAL         0.38799999999999996    
-    COAL_TAXED             EC_COAL         2041         ELC_CENTRAL         0.38799999999999996    
-    COAL_TAXED             EC_COAL         2046         ELC_CENTRAL         0.38799999999999996    
-    DSL_TAXED             EC_DSL_CC         2021         ELC_CENTRAL         0.517    
-    DSL_TAXED             EC_DSL_CC         2026         ELC_CENTRAL         0.517    
-    DSL_TAXED             EC_DSL_CC         2031         ELC_CENTRAL         0.517    
-    DSL_TAXED             EC_DSL_CC         2036         ELC_CENTRAL         0.517    
-    DSL_TAXED             EC_DSL_CC         2041         ELC_CENTRAL         0.517    
-    DSL_TAXED             EC_DSL_CC         2046         ELC_CENTRAL         0.517    
-    OIL_TAXED             EC_OIL_CC         2021         ELC_CENTRAL         0.517    
-    OIL_TAXED             EC_OIL_CC         2026         ELC_CENTRAL         0.517    
-    OIL_TAXED             EC_OIL_CC         2031         ELC_CENTRAL         0.517    
-    OIL_TAXED             EC_OIL_CC         2036         ELC_CENTRAL         0.517    
-    OIL_TAXED             EC_OIL_CC         2041         ELC_CENTRAL         0.517    
-    OIL_TAXED             EC_OIL_CC         2046         ELC_CENTRAL         0.517    
-    NATGAS_TAXED             EC_NG_CC         2021         ELC_CENTRAL         0.6202000000000001    
-    NATGAS_TAXED             EC_NG_CC         2026         ELC_CENTRAL         0.6202000000000001    
-    NATGAS_TAXED             EC_NG_CC         2031         ELC_CENTRAL         0.6202000000000001    
-    NATGAS_TAXED             EC_NG_CC         2036         ELC_CENTRAL         0.6202000000000001    
-    NATGAS_TAXED             EC_NG_CC         2041         ELC_CENTRAL         0.6202000000000001    
-    NATGAS_TAXED             EC_NG_CC         2046         ELC_CENTRAL         0.6202000000000001    
-    NATGAS_TAXED             EC_NG_OC         2021         ELC_CENTRAL         0.42469999999999997    
-    NATGAS_TAXED             EC_NG_OC         2026         ELC_CENTRAL         0.42469999999999997    
-    NATGAS_TAXED             EC_NG_OC         2031         ELC_CENTRAL         0.42469999999999997    
-    NATGAS_TAXED             EC_NG_OC         2036         ELC_CENTRAL         0.42469999999999997    
-    NATGAS_TAXED             EC_NG_OC         2041         ELC_CENTRAL         0.42469999999999997    
-    NATGAS_TAXED             EC_NG_OC         2046         ELC_CENTRAL         0.42469999999999997    
     SOLAR             EC_SOLPV         2021         ELC_CENTRAL         0.368    
     SOLAR             EC_SOLPV         2026         ELC_CENTRAL         0.368    
     SOLAR             EC_SOLPV         2031         ELC_CENTRAL         0.368    
@@ -1901,24 +1368,6 @@ param Efficiency :=
     ELC_DIST             ED_BATT         2036         ELC_DIST         0.85    
     ELC_DIST             ED_BATT         2041         ELC_DIST         0.85    
     ELC_DIST             ED_BATT         2046         ELC_DIST         0.85    
-    BIO             ED_BIO         2021         ELC_DIST         0.253    
-    BIO             ED_BIO         2026         ELC_DIST         0.253    
-    BIO             ED_BIO         2031         ELC_DIST         0.253    
-    BIO             ED_BIO         2036         ELC_DIST         0.253    
-    BIO             ED_BIO         2041         ELC_DIST         0.253    
-    BIO             ED_BIO         2046         ELC_DIST         0.253    
-    NATGAS_TAXED             ED_NG_CC         2021         ELC_DIST         0.5417000000000001    
-    NATGAS_TAXED             ED_NG_CC         2026         ELC_DIST         0.5417000000000001    
-    NATGAS_TAXED             ED_NG_CC         2031         ELC_DIST         0.5417000000000001    
-    NATGAS_TAXED             ED_NG_CC         2036         ELC_DIST         0.5417000000000001    
-    NATGAS_TAXED             ED_NG_CC         2041         ELC_DIST         0.5417000000000001    
-    NATGAS_TAXED             ED_NG_CC         2046         ELC_DIST         0.5417000000000001    
-    NATGAS_TAXED             ED_NG_OC         2021         ELC_DIST         0.376    
-    NATGAS_TAXED             ED_NG_OC         2026         ELC_DIST         0.376    
-    NATGAS_TAXED             ED_NG_OC         2031         ELC_DIST         0.376    
-    NATGAS_TAXED             ED_NG_OC         2036         ELC_DIST         0.376    
-    NATGAS_TAXED             ED_NG_OC         2041         ELC_DIST         0.376    
-    NATGAS_TAXED             ED_NG_OC         2046         ELC_DIST         0.376    
     SOLAR             ED_SOLPV         2021         ELC_DIST         0.368    
     SOLAR             ED_SOLPV         2026         ELC_DIST         0.368    
     SOLAR             ED_SOLPV         2031         ELC_DIST         0.368    
@@ -1931,13 +1380,6 @@ param Efficiency :=
     WIND             ED_WIND         2036         ELC_DIST         0.368    
     WIND             ED_WIND         2041         ELC_DIST         0.368    
     WIND             ED_WIND         2046         ELC_DIST         0.368    
-    ethos             IMPBIO         2016         BIO         1.0    
-    ethos             IMPBIO         2021         BIO         1.0    
-    ethos             IMPBIO         2026         BIO         1.0    
-    ethos             IMPBIO         2031         BIO         1.0    
-    ethos             IMPBIO         2036         BIO         1.0    
-    ethos             IMPBIO         2041         BIO         1.0    
-    ethos             IMPBIO         2046         BIO         1.0    
     ethos             IMPCOAL         2016         COAL         1.0    
     ethos             IMPCOAL         2021         COAL         1.0    
     ethos             IMPCOAL         2026         COAL         1.0    
@@ -2111,42 +1553,6 @@ param CostInvest :=
     EC_BATT         2036     1284.0    
     EC_BATT         2041     1284.0    
     EC_BATT         2046     1284.0    
-    EC_BIO         2021     3749.0    
-    EC_BIO         2026     3749.0    
-    EC_BIO         2031     3749.0    
-    EC_BIO         2036     3749.0    
-    EC_BIO         2041     3749.0    
-    EC_BIO         2046     3749.0    
-    EC_COAL         2021     3644.0    
-    EC_COAL         2026     3644.0    
-    EC_COAL         2031     3644.0    
-    EC_COAL         2036     3644.0    
-    EC_COAL         2041     3644.0    
-    EC_COAL         2046     3644.0    
-    EC_DSL_CC         2021     952.0    
-    EC_DSL_CC         2026     952.0    
-    EC_DSL_CC         2031     952.0    
-    EC_DSL_CC         2036     952.0    
-    EC_DSL_CC         2041     952.0    
-    EC_DSL_CC         2046     952.0    
-    EC_OIL_CC         2021     952.0    
-    EC_OIL_CC         2026     952.0    
-    EC_OIL_CC         2031     952.0    
-    EC_OIL_CC         2036     952.0    
-    EC_OIL_CC         2041     952.0    
-    EC_OIL_CC         2046     952.0    
-    EC_NG_CC         2021     612.6    
-    EC_NG_CC         2026     612.6    
-    EC_NG_CC         2031     612.6    
-    EC_NG_CC         2036     612.6    
-    EC_NG_CC         2041     612.6    
-    EC_NG_CC         2046     612.6    
-    EC_NG_OC         2021     188.3    
-    EC_NG_OC         2026     188.3    
-    EC_NG_OC         2031     188.3    
-    EC_NG_OC         2036     188.3    
-    EC_NG_OC         2041     188.3    
-    EC_NG_OC         2046     188.3    
     EC_SOLPV         2021     1060.0    
     EC_SOLPV         2026     1060.0    
     EC_SOLPV         2031     1060.0    
@@ -2165,24 +1571,6 @@ param CostInvest :=
     ED_BATT         2036     1284.0    
     ED_BATT         2041     1284.0    
     ED_BATT         2046     1284.0    
-    ED_BIO         2021     3749.0    
-    ED_BIO         2026     3749.0    
-    ED_BIO         2031     3749.0    
-    ED_BIO         2036     3749.0    
-    ED_BIO         2041     3749.0    
-    ED_BIO         2046     3749.0    
-    ED_NG_CC         2021     860.9    
-    ED_NG_CC         2026     860.9    
-    ED_NG_CC         2031     860.9    
-    ED_NG_CC         2036     860.9    
-    ED_NG_CC         2041     860.9    
-    ED_NG_CC         2046     860.9    
-    ED_NG_OC         2021     305.2    
-    ED_NG_OC         2026     305.2    
-    ED_NG_OC         2031     305.2    
-    ED_NG_OC         2036     305.2    
-    ED_NG_OC         2041     305.2    
-    ED_NG_OC         2046     305.2    
     ED_SOLPV         2021     1060.0    
     ED_SOLPV         2026     1060.0    
     ED_SOLPV         2031     1060.0    
@@ -2344,132 +1732,6 @@ param CostFixed :=
 2046         EC_BATT         2036     32.1    
 2046         EC_BATT         2041     32.1    
 2046         EC_BATT         2046     32.1    
-2021         EC_BIO         2021     112.0    
-2026         EC_BIO         2021     112.0    
-2026         EC_BIO         2026     112.0    
-2031         EC_BIO         2021     112.0    
-2031         EC_BIO         2026     112.0    
-2031         EC_BIO         2031     112.0    
-2036         EC_BIO         2021     112.0    
-2036         EC_BIO         2026     112.0    
-2036         EC_BIO         2031     112.0    
-2036         EC_BIO         2036     112.0    
-2041         EC_BIO         2021     112.0    
-2041         EC_BIO         2026     112.0    
-2041         EC_BIO         2031     112.0    
-2041         EC_BIO         2036     112.0    
-2041         EC_BIO         2041     112.0    
-2046         EC_BIO         2021     112.0    
-2046         EC_BIO         2026     112.0    
-2046         EC_BIO         2031     112.0    
-2046         EC_BIO         2036     112.0    
-2046         EC_BIO         2041     112.0    
-2046         EC_BIO         2046     112.0    
-2021         EC_COAL         2021     33.0    
-2026         EC_COAL         2021     33.0    
-2026         EC_COAL         2026     33.0    
-2031         EC_COAL         2021     33.0    
-2031         EC_COAL         2026     33.0    
-2031         EC_COAL         2031     33.0    
-2036         EC_COAL         2021     33.0    
-2036         EC_COAL         2026     33.0    
-2036         EC_COAL         2031     33.0    
-2036         EC_COAL         2036     33.0    
-2041         EC_COAL         2021     33.0    
-2041         EC_COAL         2026     33.0    
-2041         EC_COAL         2031     33.0    
-2041         EC_COAL         2036     33.0    
-2041         EC_COAL         2041     33.0    
-2046         EC_COAL         2021     33.0    
-2046         EC_COAL         2026     33.0    
-2046         EC_COAL         2031     33.0    
-2046         EC_COAL         2036     33.0    
-2046         EC_COAL         2041     33.0    
-2046         EC_COAL         2046     33.0    
-2021         EC_DSL_CC         2021     1.0    
-2026         EC_DSL_CC         2021     1.0    
-2026         EC_DSL_CC         2026     1.0    
-2031         EC_DSL_CC         2021     1.0    
-2031         EC_DSL_CC         2026     1.0    
-2031         EC_DSL_CC         2031     1.0    
-2036         EC_DSL_CC         2021     1.0    
-2036         EC_DSL_CC         2026     1.0    
-2036         EC_DSL_CC         2031     1.0    
-2036         EC_DSL_CC         2036     1.0    
-2041         EC_DSL_CC         2021     1.0    
-2041         EC_DSL_CC         2026     1.0    
-2041         EC_DSL_CC         2031     1.0    
-2041         EC_DSL_CC         2036     1.0    
-2041         EC_DSL_CC         2041     1.0    
-2046         EC_DSL_CC         2021     1.0    
-2046         EC_DSL_CC         2026     1.0    
-2046         EC_DSL_CC         2031     1.0    
-2046         EC_DSL_CC         2036     1.0    
-2046         EC_DSL_CC         2041     1.0    
-2046         EC_DSL_CC         2046     1.0    
-2021         EC_OIL_CC         2021     1.0    
-2026         EC_OIL_CC         2021     1.0    
-2026         EC_OIL_CC         2026     1.0    
-2031         EC_OIL_CC         2021     1.0    
-2031         EC_OIL_CC         2026     1.0    
-2031         EC_OIL_CC         2031     1.0    
-2036         EC_OIL_CC         2021     1.0    
-2036         EC_OIL_CC         2026     1.0    
-2036         EC_OIL_CC         2031     1.0    
-2036         EC_OIL_CC         2036     1.0    
-2041         EC_OIL_CC         2021     1.0    
-2041         EC_OIL_CC         2026     1.0    
-2041         EC_OIL_CC         2031     1.0    
-2041         EC_OIL_CC         2036     1.0    
-2041         EC_OIL_CC         2041     1.0    
-2046         EC_OIL_CC         2021     1.0    
-2046         EC_OIL_CC         2026     1.0    
-2046         EC_OIL_CC         2031     1.0    
-2046         EC_OIL_CC         2036     1.0    
-2046         EC_OIL_CC         2041     1.0    
-2046         EC_OIL_CC         2046     1.0    
-2021         EC_NG_CC         2021     11.0    
-2026         EC_NG_CC         2021     11.0    
-2026         EC_NG_CC         2026     11.0    
-2031         EC_NG_CC         2021     11.0    
-2031         EC_NG_CC         2026     11.0    
-2031         EC_NG_CC         2031     11.0    
-2036         EC_NG_CC         2021     11.0    
-2036         EC_NG_CC         2026     11.0    
-2036         EC_NG_CC         2031     11.0    
-2036         EC_NG_CC         2036     11.0    
-2041         EC_NG_CC         2021     11.0    
-2041         EC_NG_CC         2026     11.0    
-2041         EC_NG_CC         2031     11.0    
-2041         EC_NG_CC         2036     11.0    
-2041         EC_NG_CC         2041     11.0    
-2046         EC_NG_CC         2021     11.0    
-2046         EC_NG_CC         2026     11.0    
-2046         EC_NG_CC         2031     11.0    
-2046         EC_NG_CC         2036     11.0    
-2046         EC_NG_CC         2041     11.0    
-2046         EC_NG_CC         2046     11.0    
-2021         EC_NG_OC         2021     12.0    
-2026         EC_NG_OC         2021     12.0    
-2026         EC_NG_OC         2026     12.0    
-2031         EC_NG_OC         2021     12.0    
-2031         EC_NG_OC         2026     12.0    
-2031         EC_NG_OC         2031     12.0    
-2036         EC_NG_OC         2021     12.0    
-2036         EC_NG_OC         2026     12.0    
-2036         EC_NG_OC         2031     12.0    
-2036         EC_NG_OC         2036     12.0    
-2041         EC_NG_OC         2021     12.0    
-2041         EC_NG_OC         2026     12.0    
-2041         EC_NG_OC         2031     12.0    
-2041         EC_NG_OC         2036     12.0    
-2041         EC_NG_OC         2041     12.0    
-2046         EC_NG_OC         2021     12.0    
-2046         EC_NG_OC         2026     12.0    
-2046         EC_NG_OC         2031     12.0    
-2046         EC_NG_OC         2036     12.0    
-2046         EC_NG_OC         2041     12.0    
-2046         EC_NG_OC         2046     12.0    
 2021         EC_SOLPV         2021     13.0    
 2026         EC_SOLPV         2021     13.0    
 2026         EC_SOLPV         2026     13.0    
@@ -2527,69 +1789,6 @@ param CostFixed :=
 2046         ED_BATT         2036     32.1    
 2046         ED_BATT         2041     32.1    
 2046         ED_BATT         2046     32.1    
-2021         ED_BIO         2021     112.0    
-2026         ED_BIO         2021     112.0    
-2026         ED_BIO         2026     112.0    
-2031         ED_BIO         2021     112.0    
-2031         ED_BIO         2026     112.0    
-2031         ED_BIO         2031     112.0    
-2036         ED_BIO         2021     112.0    
-2036         ED_BIO         2026     112.0    
-2036         ED_BIO         2031     112.0    
-2036         ED_BIO         2036     112.0    
-2041         ED_BIO         2021     112.0    
-2041         ED_BIO         2026     112.0    
-2041         ED_BIO         2031     112.0    
-2041         ED_BIO         2036     112.0    
-2041         ED_BIO         2041     112.0    
-2046         ED_BIO         2021     112.0    
-2046         ED_BIO         2026     112.0    
-2046         ED_BIO         2031     112.0    
-2046         ED_BIO         2036     112.0    
-2046         ED_BIO         2041     112.0    
-2046         ED_BIO         2046     112.0    
-2021         ED_NG_CC         2021     11.0    
-2026         ED_NG_CC         2021     11.0    
-2026         ED_NG_CC         2026     11.0    
-2031         ED_NG_CC         2021     11.0    
-2031         ED_NG_CC         2026     11.0    
-2031         ED_NG_CC         2031     11.0    
-2036         ED_NG_CC         2021     11.0    
-2036         ED_NG_CC         2026     11.0    
-2036         ED_NG_CC         2031     11.0    
-2036         ED_NG_CC         2036     11.0    
-2041         ED_NG_CC         2021     11.0    
-2041         ED_NG_CC         2026     11.0    
-2041         ED_NG_CC         2031     11.0    
-2041         ED_NG_CC         2036     11.0    
-2041         ED_NG_CC         2041     11.0    
-2046         ED_NG_CC         2021     11.0    
-2046         ED_NG_CC         2026     11.0    
-2046         ED_NG_CC         2031     11.0    
-2046         ED_NG_CC         2036     11.0    
-2046         ED_NG_CC         2041     11.0    
-2046         ED_NG_CC         2046     11.0    
-2021         ED_NG_OC         2021     12.0    
-2026         ED_NG_OC         2021     12.0    
-2026         ED_NG_OC         2026     12.0    
-2031         ED_NG_OC         2021     12.0    
-2031         ED_NG_OC         2026     12.0    
-2031         ED_NG_OC         2031     12.0    
-2036         ED_NG_OC         2021     12.0    
-2036         ED_NG_OC         2026     12.0    
-2036         ED_NG_OC         2031     12.0    
-2036         ED_NG_OC         2036     12.0    
-2041         ED_NG_OC         2021     12.0    
-2041         ED_NG_OC         2026     12.0    
-2041         ED_NG_OC         2031     12.0    
-2041         ED_NG_OC         2036     12.0    
-2041         ED_NG_OC         2041     12.0    
-2046         ED_NG_OC         2021     12.0    
-2046         ED_NG_OC         2026     12.0    
-2046         ED_NG_OC         2031     12.0    
-2046         ED_NG_OC         2036     12.0    
-2046         ED_NG_OC         2041     12.0    
-2046         ED_NG_OC         2046     12.0    
 2021         ED_SOLPV         2021     13.0    
 2026         ED_SOLPV         2021     13.0    
 2026         ED_SOLPV         2026     13.0    
@@ -2746,132 +1945,6 @@ param CostVariable :=
 2046         EC_BATT         2036     0.0    
 2046         EC_BATT         2041     0.0    
 2046         EC_BATT         2046     0.0    
-2021         EC_BIO         2021     1.67    
-2026         EC_BIO         2021     1.67    
-2026         EC_BIO         2026     1.67    
-2031         EC_BIO         2021     1.67    
-2031         EC_BIO         2026     1.67    
-2031         EC_BIO         2031     1.67    
-2036         EC_BIO         2021     1.67    
-2036         EC_BIO         2026     1.67    
-2036         EC_BIO         2031     1.67    
-2036         EC_BIO         2036     1.67    
-2041         EC_BIO         2021     1.67    
-2041         EC_BIO         2026     1.67    
-2041         EC_BIO         2031     1.67    
-2041         EC_BIO         2036     1.67    
-2041         EC_BIO         2041     1.67    
-2046         EC_BIO         2021     1.67    
-2046         EC_BIO         2026     1.67    
-2046         EC_BIO         2031     1.67    
-2046         EC_BIO         2036     1.67    
-2046         EC_BIO         2041     1.67    
-2046         EC_BIO         2046     1.67    
-2021         EC_COAL         2021     1.39    
-2026         EC_COAL         2021     1.39    
-2026         EC_COAL         2026     1.39    
-2031         EC_COAL         2021     1.39    
-2031         EC_COAL         2026     1.39    
-2031         EC_COAL         2031     1.39    
-2036         EC_COAL         2021     1.39    
-2036         EC_COAL         2026     1.39    
-2036         EC_COAL         2031     1.39    
-2036         EC_COAL         2036     1.39    
-2041         EC_COAL         2021     1.39    
-2041         EC_COAL         2026     1.39    
-2041         EC_COAL         2031     1.39    
-2041         EC_COAL         2036     1.39    
-2041         EC_COAL         2041     1.39    
-2046         EC_COAL         2021     1.39    
-2046         EC_COAL         2026     1.39    
-2046         EC_COAL         2031     1.39    
-2046         EC_COAL         2036     1.39    
-2046         EC_COAL         2041     1.39    
-2046         EC_COAL         2046     1.39    
-2021         EC_DSL_CC         2021     11.33    
-2026         EC_DSL_CC         2021     11.33    
-2026         EC_DSL_CC         2026     11.33    
-2031         EC_DSL_CC         2021     11.33    
-2031         EC_DSL_CC         2026     11.33    
-2031         EC_DSL_CC         2031     11.33    
-2036         EC_DSL_CC         2021     11.33    
-2036         EC_DSL_CC         2026     11.33    
-2036         EC_DSL_CC         2031     11.33    
-2036         EC_DSL_CC         2036     11.33    
-2041         EC_DSL_CC         2021     11.33    
-2041         EC_DSL_CC         2026     11.33    
-2041         EC_DSL_CC         2031     11.33    
-2041         EC_DSL_CC         2036     11.33    
-2041         EC_DSL_CC         2041     11.33    
-2046         EC_DSL_CC         2021     11.33    
-2046         EC_DSL_CC         2026     11.33    
-2046         EC_DSL_CC         2031     11.33    
-2046         EC_DSL_CC         2036     11.33    
-2046         EC_DSL_CC         2041     11.33    
-2046         EC_DSL_CC         2046     11.33    
-2021         EC_OIL_CC         2021     11.33    
-2026         EC_OIL_CC         2021     11.33    
-2026         EC_OIL_CC         2026     11.33    
-2031         EC_OIL_CC         2021     11.33    
-2031         EC_OIL_CC         2026     11.33    
-2031         EC_OIL_CC         2031     11.33    
-2036         EC_OIL_CC         2021     11.33    
-2036         EC_OIL_CC         2026     11.33    
-2036         EC_OIL_CC         2031     11.33    
-2036         EC_OIL_CC         2036     11.33    
-2041         EC_OIL_CC         2021     11.33    
-2041         EC_OIL_CC         2026     11.33    
-2041         EC_OIL_CC         2031     11.33    
-2041         EC_OIL_CC         2036     11.33    
-2041         EC_OIL_CC         2041     11.33    
-2046         EC_OIL_CC         2021     11.33    
-2046         EC_OIL_CC         2026     11.33    
-2046         EC_OIL_CC         2031     11.33    
-2046         EC_OIL_CC         2036     11.33    
-2046         EC_OIL_CC         2041     11.33    
-2046         EC_OIL_CC         2046     11.33    
-2021         EC_NG_CC         2021     0.833    
-2026         EC_NG_CC         2021     0.833    
-2026         EC_NG_CC         2026     0.833    
-2031         EC_NG_CC         2021     0.833    
-2031         EC_NG_CC         2026     0.833    
-2031         EC_NG_CC         2031     0.833    
-2036         EC_NG_CC         2021     0.833    
-2036         EC_NG_CC         2026     0.833    
-2036         EC_NG_CC         2031     0.833    
-2036         EC_NG_CC         2036     0.833    
-2041         EC_NG_CC         2021     0.833    
-2041         EC_NG_CC         2026     0.833    
-2041         EC_NG_CC         2031     0.833    
-2041         EC_NG_CC         2036     0.833    
-2041         EC_NG_CC         2041     0.833    
-2046         EC_NG_CC         2021     0.833    
-2046         EC_NG_CC         2026     0.833    
-2046         EC_NG_CC         2031     0.833    
-2046         EC_NG_CC         2036     0.833    
-2046         EC_NG_CC         2041     0.833    
-2046         EC_NG_CC         2046     0.833    
-2021         EC_NG_OC         2021     1.944    
-2026         EC_NG_OC         2021     1.944    
-2026         EC_NG_OC         2026     1.944    
-2031         EC_NG_OC         2021     1.944    
-2031         EC_NG_OC         2026     1.944    
-2031         EC_NG_OC         2031     1.944    
-2036         EC_NG_OC         2021     1.944    
-2036         EC_NG_OC         2026     1.944    
-2036         EC_NG_OC         2031     1.944    
-2036         EC_NG_OC         2036     1.944    
-2041         EC_NG_OC         2021     1.944    
-2041         EC_NG_OC         2026     1.944    
-2041         EC_NG_OC         2031     1.944    
-2041         EC_NG_OC         2036     1.944    
-2041         EC_NG_OC         2041     1.944    
-2046         EC_NG_OC         2021     1.944    
-2046         EC_NG_OC         2026     1.944    
-2046         EC_NG_OC         2031     1.944    
-2046         EC_NG_OC         2036     1.944    
-2046         EC_NG_OC         2041     1.944    
-2046         EC_NG_OC         2046     1.944    
 2021         EC_SOLPV         2021     0.0    
 2026         EC_SOLPV         2021     0.0    
 2026         EC_SOLPV         2026     0.0    
@@ -2929,69 +2002,6 @@ param CostVariable :=
 2046         ED_BATT         2036     0.0    
 2046         ED_BATT         2041     0.0    
 2046         ED_BATT         2046     0.0    
-2021         ED_BIO         2021     1.67    
-2026         ED_BIO         2021     1.67    
-2026         ED_BIO         2026     1.67    
-2031         ED_BIO         2021     1.67    
-2031         ED_BIO         2026     1.67    
-2031         ED_BIO         2031     1.67    
-2036         ED_BIO         2021     1.67    
-2036         ED_BIO         2026     1.67    
-2036         ED_BIO         2031     1.67    
-2036         ED_BIO         2036     1.67    
-2041         ED_BIO         2021     1.67    
-2041         ED_BIO         2026     1.67    
-2041         ED_BIO         2031     1.67    
-2041         ED_BIO         2036     1.67    
-2041         ED_BIO         2041     1.67    
-2046         ED_BIO         2021     1.67    
-2046         ED_BIO         2026     1.67    
-2046         ED_BIO         2031     1.67    
-2046         ED_BIO         2036     1.67    
-2046         ED_BIO         2041     1.67    
-2046         ED_BIO         2046     1.67    
-2021         ED_NG_CC         2021     0.833    
-2026         ED_NG_CC         2021     0.833    
-2026         ED_NG_CC         2026     0.833    
-2031         ED_NG_CC         2021     0.833    
-2031         ED_NG_CC         2026     0.833    
-2031         ED_NG_CC         2031     0.833    
-2036         ED_NG_CC         2021     0.833    
-2036         ED_NG_CC         2026     0.833    
-2036         ED_NG_CC         2031     0.833    
-2036         ED_NG_CC         2036     0.833    
-2041         ED_NG_CC         2021     0.833    
-2041         ED_NG_CC         2026     0.833    
-2041         ED_NG_CC         2031     0.833    
-2041         ED_NG_CC         2036     0.833    
-2041         ED_NG_CC         2041     0.833    
-2046         ED_NG_CC         2021     0.833    
-2046         ED_NG_CC         2026     0.833    
-2046         ED_NG_CC         2031     0.833    
-2046         ED_NG_CC         2036     0.833    
-2046         ED_NG_CC         2041     0.833    
-2046         ED_NG_CC         2046     0.833    
-2021         ED_NG_OC         2021     1.944    
-2026         ED_NG_OC         2021     1.944    
-2026         ED_NG_OC         2026     1.944    
-2031         ED_NG_OC         2021     1.944    
-2031         ED_NG_OC         2026     1.944    
-2031         ED_NG_OC         2031     1.944    
-2036         ED_NG_OC         2021     1.944    
-2036         ED_NG_OC         2026     1.944    
-2036         ED_NG_OC         2031     1.944    
-2036         ED_NG_OC         2036     1.944    
-2041         ED_NG_OC         2021     1.944    
-2041         ED_NG_OC         2026     1.944    
-2041         ED_NG_OC         2031     1.944    
-2041         ED_NG_OC         2036     1.944    
-2041         ED_NG_OC         2041     1.944    
-2046         ED_NG_OC         2021     1.944    
-2046         ED_NG_OC         2026     1.944    
-2046         ED_NG_OC         2031     1.944    
-2046         ED_NG_OC         2036     1.944    
-2046         ED_NG_OC         2041     1.944    
-2046         ED_NG_OC         2046     1.944    
 2021         ED_SOLPV         2021     0.0    
 2026         ED_SOLPV         2021     0.0    
 2026         ED_SOLPV         2026     0.0    
@@ -3034,34 +2044,6 @@ param CostVariable :=
 2046         ED_WIND         2036     0.0    
 2046         ED_WIND         2041     0.0    
 2046         ED_WIND         2046     0.0    
-2016         IMPBIO         2016     5.7    
-2021         IMPBIO         2016     6.499518066652088    
-2021         IMPBIO         2021     6.499518066652088    
-2026         IMPBIO         2016     7.411181596269632    
-2026         IMPBIO         2021     7.411181596269632    
-2026         IMPBIO         2026     7.411181596269632    
-2031         IMPBIO         2016     8.450720821086653    
-2031         IMPBIO         2021     8.450720821086653    
-2031         IMPBIO         2026     8.450720821086653    
-2031         IMPBIO         2031     8.450720821086653    
-2036         IMPBIO         2016     9.6360723952431    
-2036         IMPBIO         2021     9.6360723952431    
-2036         IMPBIO         2026     9.6360723952431    
-2036         IMPBIO         2031     9.6360723952431    
-2036         IMPBIO         2036     9.6360723952431    
-2041         IMPBIO         2016     10.987688881482455    
-2041         IMPBIO         2021     10.987688881482455    
-2041         IMPBIO         2026     10.987688881482455    
-2041         IMPBIO         2031     10.987688881482455    
-2041         IMPBIO         2036     10.987688881482455    
-2041         IMPBIO         2041     10.987688881482455    
-2046         IMPBIO         2016     12.52889164841184    
-2046         IMPBIO         2021     12.52889164841184    
-2046         IMPBIO         2026     12.52889164841184    
-2046         IMPBIO         2031     12.52889164841184    
-2046         IMPBIO         2036     12.52889164841184    
-2046         IMPBIO         2041     12.52889164841184    
-2046         IMPBIO         2046     12.52889164841184    
 2016         IMPCOAL         2016     4.03    
 2021         IMPCOAL         2016     4.6042326912622435    
 2021         IMPCOAL         2021     4.6042326912622435    
@@ -3556,11 +2538,6 @@ param RampUp :=
     EX_OIL_TYPE2         0.73    
     EX_OIL_TYPE3         0.92    
     EX_NUCLEAR         0.01    
-    EC_COAL         0.01    
-    EC_DSL_CC         0.93    
-    EC_OIL_CC         0.93    
-    EC_NG_CC         1.0    
-    ED_NG_CC         1.0    
 ;
 
 param RampDown := 
@@ -3571,10 +2548,5 @@ param RampDown :=
     EX_OIL_TYPE2         0.73    
     EX_OIL_TYPE3         0.92    
     EX_NUCLEAR         0.01    
-    EC_COAL         0.01    
-    EC_DSL_CC         0.93    
-    EC_OIL_CC         0.93    
-    EC_NG_CC         1.0    
-    ED_NG_CC         1.0    
 ;
 

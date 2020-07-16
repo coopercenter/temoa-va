@@ -6,8 +6,8 @@ import temoatools as tt
 # ===============
 
 onlySimple = False
-folder = '/Users/rogerzhu/Documents/temoa/temoa-va/baselines/databases'
-dbs = ["A.sqlite"]
+folder = '/Users/rogerzhu/Documents/temoa/temoa-va/virginia/databases'
+dbs = ["A.sqlite" , "B.sqlite"]
 
 createPlots = 'Y'  # Create default plots
 saveData = 'Y'  # Save data as a csv or xls
