@@ -33,7 +33,7 @@ if __name__ == '__main__':
     ncpus = 6  # int(os.getenv('NUM_PROCS'))
     solver = ''  # 'gurobi'
 
-    shutil.copy2('/Users/rogerzhu/Documents/temoa/temoa-va/virginia/data/data_virginia.xlsx', '/Users/rogerzhu/Documents/temoa/temoa-va/virginia/data/data_virginia_'+str(calendar.timegm(time.gmtime()))+'.xlsx');
+    #shutil.copy2('/Users/rogerzhu/Documents/temoa/temoa-va/virginia/data/data_virginia.xlsx', '/Users/rogerzhu/Documents/temoa/temoa-va/virginia/data/data_virginia_'+str(calendar.timegm(time.gmtime()))+'.xlsx');
     for modelInputs_XLSX, scenarioNames in zip(modelInputs_XLSX_list, scenarioNames_list):
 
         # =======================================================

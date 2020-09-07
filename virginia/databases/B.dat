@@ -450,6 +450,37 @@ param GlobalDiscountRate :=
 0.02
 ;
 
+param DiscountRate := 
+    EC_SOLPV         2020     0.08    
+    EC_SOLPV         2025     0.08    
+    EC_SOLPV         2030     0.08    
+    EC_SOLPV         2035     0.08    
+    EC_SOLPV         2040     0.08    
+    EC_SOLPV         2045     0.08    
+    EC_SOLPV         2050     0.08    
+    EC_WIND             2020     0.08    
+    EC_WIND             2025     0.08    
+    EC_WIND             2030     0.08    
+    EC_WIND             2035     0.08    
+    EC_WIND             2040     0.08    
+    EC_WIND             2045     0.08    
+    EC_WIND             2050     0.08    
+    ED_SOLPV            2020     0.08    
+    ED_SOLPV            2025     0.08    
+    ED_SOLPV            2030     0.08    
+    ED_SOLPV            2035     0.08    
+    ED_SOLPV            2040     0.08    
+    ED_SOLPV            2045     0.08    
+    ED_SOLPV            2050     0.08    
+    ED_WIND         2020     0.08    
+    ED_WIND         2025     0.08    
+    ED_WIND         2030     0.08    
+    ED_WIND         2035     0.08    
+    ED_WIND         2040     0.08    
+    ED_WIND         2045     0.08    
+    ED_WIND         2050     0.08    
+;
+
 param EmissionActivity := 
     CO2             ethos             IMPBIO         2017         BIO         0.0    
     CO2             ethos             IMPBIO         2020         BIO         0.0    
