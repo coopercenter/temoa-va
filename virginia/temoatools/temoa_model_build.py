@@ -331,8 +331,8 @@ def processSystem(inputs, local, outputs):
     outputs['GlobalDiscountRate'].append(str(inputs['DiscountRateGlobal'].DiscountRate[0]))
 
     # Discount Rate Tech
-    for tech, vintage, tech_rate in zip(inputs['DiscountRateTech'].tech, inputs['DiscountRateTech'].vintage, inputs['DiscountRateTech'].tech_rate):
-        outputs['DiscountRate'].append((tech, vintage, tech_rate, ""))
+    for tech, vintage, tech_rate, tech_rate_notes in zip(inputs['DiscountRateTech'].tech, inputs['DiscountRateTech'].vintage, inputs['DiscountRateTech'].tech_rate, inputs['DiscountRateTech'].tech_rate_notes):
+        outputs['DiscountRate'].append((tech, vintage, tech_rate, str(tech_rate_notes)))
     
     # ReserveMargin
     if local['include_reserve_margin'] == 'Y':
