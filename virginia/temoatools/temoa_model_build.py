@@ -14,7 +14,7 @@ debug = False
 
 # Format for inputs, format is name and number of associated entries
 inputTables = [("representativeDays", 2), ("timesOfDay", 2), ("Connections", 11), ("ConnectionsExisting", 4),
-               ("Demand", 4), ("DiscountRateGlobal", 2), ("DiscountRateTech",4),("Fuels", 12), ("FuelsExisting", 4), ("PowerPlants", 7),
+               ("Demand", 4), ("DiscountRateGlobal", 2), ("DiscountRateTech",4),("Emission",5), ("Fuels", 12), ("FuelsExisting", 4), ("PowerPlants", 7),
                ("PowerPlantsPerformance", 9), ("PowerPlantsCosts", 7), ("PowerPlantsConstraints", 7),
                ("PowerPlantsExisting", 4), ("ReserveMargin", 2), ("capacityFactorTOD", 5), ("ref", 6)]
 
@@ -29,7 +29,7 @@ temoaTables = [('commodities', 3), ('technologies', 5), ('tech_baseload', 1),
                ('time_periods', 2), ('time_season', 1), ('CapacityFactorTech', 5),
                ('CapacityToActivity', 3), ('CostFixed', 6), ('CostInvest', 5),
                ('CostVariable', 6), ('Demand', 5), ('DemandSpecificDistribution', 5), ('DiscountRate',4),
-               ('Efficiency', 6), ('EmissionActivity', 8),
+               ('Efficiency', 6), ('EmissionActivity', 8), ("EmissionLimit",5), 
                ('ExistingCapacity', 5), ('LifetimeLoanTech', 3), ('LifetimeTech', 3),
                ('MaxCapacity', 5), ('MaxActivity', 5),
                ('GlobalDiscountRate', 1), ('GrowthRateMax', 3), ('GrowthRateSeed', 4),
@@ -109,7 +109,7 @@ def inputs2Dict(modelInputs, path):
 
     # tables to read-in from SQL
     tables = ["representativeDays", "timesOfDay", "Connections", "ConnectionsExisting",
-              "Demand", "DiscountRateGlobal", "DiscountRateTech","Fuels", "FuelsExisting", "PowerPlants",
+              "Demand", "DiscountRateGlobal", "DiscountRateTech", "Emission", "Fuels", "FuelsExisting", "PowerPlants",
               "PowerPlantsPerformance", "PowerPlantsCosts", "PowerPlantsConstraints",
               "PowerPlantsExisting", "ReserveMargin", "capacityFactorTOD", "ref"]
 
@@ -333,6 +333,10 @@ def processSystem(inputs, local, outputs):
     # Discount Rate Tech
     for tech, vintage, tech_rate, tech_rate_notes in zip(inputs['DiscountRateTech'].tech, inputs['DiscountRateTech'].vintage, inputs['DiscountRateTech'].tech_rate, inputs['DiscountRateTech'].tech_rate_notes):
         outputs['DiscountRate'].append((tech, vintage, tech_rate, str(tech_rate_notes)))
+    
+    # Emission Limit
+    for periods, emis_comm, emis_limit, emis_limit_units, emis_limit_notes in zip(inputs['Emission'].periods,inputs['Emission'].emis_comm,inputs['Emission'].emis_limit,inputs['Emission'].emis_limit_units,inputs['Emission'].emis_limit_notes):
+        outputs['EmissionLimit'].append((periods,str(emis_comm),emis_limit,str(emis_limit_units),str(emis_limit_notes)))
     
     # ReserveMargin
     if local['include_reserve_margin'] == 'Y':
