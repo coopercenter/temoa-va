@@ -11,7 +11,7 @@
 9,A.sqlite,solve,EC_WIND,0.0,0.0
 10,A.sqlite,solve,ED_BATT,0.0,0.0
 11,A.sqlite,solve,ED_BIO,0.0,0.0
-12,A.sqlite,solve,ED_NG_CC,0.0,8.876952
+12,A.sqlite,solve,ED_NG_CC,0.0,9.1322275
 13,A.sqlite,solve,ED_NG_OC,0.0,0.0
 14,A.sqlite,solve,ED_SOLPV,0.0,0.0
 15,A.sqlite,solve,ED_WIND,0.0,0.0
@@ -29,13 +29,13 @@
 27,A.sqlite,solve,EX_SOLPV,0.3925,0.3925
 28,A.sqlite,solve,EX_WIND,0.001,0.001
 29,B.sqlite,solve,EC_BATT,0.0,0.0
-30,B.sqlite,solve,EC_BIO,0.0,5.6787391
-31,B.sqlite,solve,EC_PUMP,0.0,0.0
+30,B.sqlite,solve,EC_BIO,0.0,4.9934583
+31,B.sqlite,solve,EC_PUMP,0.0,0.57884268
 32,B.sqlite,solve,EC_SOLPV,0.0,0.0
 33,B.sqlite,solve,EC_WIND,0.0,0.0
 34,B.sqlite,solve,ED_BATT,0.0,0.0
 35,B.sqlite,solve,ED_BIO,0.0,0.0
-36,B.sqlite,solve,ED_SOLPV,0.0,1.2349191
+36,B.sqlite,solve,ED_SOLPV,0.0,2.4488703
 37,B.sqlite,solve,ED_WIND,0.0,0.0
 38,B.sqlite,solve,EX_COAL,3.78,3.78
 39,B.sqlite,solve,EX_DSL_CC,0.001,0.001

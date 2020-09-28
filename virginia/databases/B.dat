@@ -519,7 +519,7 @@ param EmissionActivity :=
 ;
 
 param Demand := 
-2018         ELC_DMD         343.8    
+2018         ELC_DMD         242.7    
 2020         ELC_DMD         425.8    
 ;
 
@@ -3986,9 +3986,9 @@ param CostVariable :=
 2020         ED_BIO         2020     1.39    
 2020         ED_SOLPV         2020     0.0    
 2020         ED_WIND         2020     0.0    
-2018         IMPBIO         2018     2.76    
-2020         IMPBIO         2018     2.871504    
-2020         IMPBIO         2020     2.871504    
+2018         IMPBIO         2018     5.0    
+2020         IMPBIO         2018     5.202    
+2020         IMPBIO         2020     5.202    
 2018         IMPCOAL         2018     2.76    
 2020         IMPCOAL         2018     2.871504    
 2020         IMPCOAL         2020     2.871504    
