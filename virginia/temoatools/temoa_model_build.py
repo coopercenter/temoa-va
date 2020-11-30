@@ -15,6 +15,8 @@ debug = False
 # Format for local, names only
 localTables = ['plants_to_include', 'fuels_to_include', 'connections_to_include', 'include_baseload',
                'include_reserve_margin', 'include_ramping', 'include_growth_limit',
+               'include_RPS',
+               'include_emission_limit',
                'future_periods', 'active_future_periods', 'allTimePeriods', 'commodities', 'MaxLoan_yrs']
 
 # Format for outputs, format is name and number of associated entries - based on
@@ -46,7 +48,7 @@ demand_commodity = 'ELC_DMD'
 # Function to build a temoa model
 # =============================================================================
 def build(modelInputs, scenarioXLSX, scenarioName, outFilename, sensitivity={}, MCinputs={},
-          path=os.path.normcase('.')):
+          path=os.path.normcase('.'), mc_type='perturbations'):
     data_path = os.path.join(path, 'data')
     # Get empty dictionary of local variables
     local = getEmptyLocalDict()
@@ -57,19 +59,30 @@ def build(modelInputs, scenarioXLSX, scenarioName, outFilename, sensitivity={}, 
     # Read-in inputs as dictionary
     inputs = inputs2Dict(modelInputs, data_path)
 
+    # ---------------------------------
     # Apply Sensitivity to inputs
+    # ---------------------------------
     if debug:
         print(sensitivity)
     if not len(
-            sensitivity) == 0:  # if dictionary is empty, it will evaluae to false, and no senstivity will be performed
+            sensitivity) == 0:  # if dictionary is empty, it will evaluate to false, and no senstivity will be performed
         inputs, local = applySensitivity(inputs, sensitivity, local)
 
+    # ---------------------------------
     # Apply Monte Carlo to inputs
+    # ---------------------------------
     if debug:
         print(MCinputs)
-    if not len(MCinputs) == 0:  # if dictionary is empty, it will evaluae to false, and no monte carlo will be performed
-        for i in range(len(MCinputs)):
-            inputs, local = applySensitivity(inputs, MCinputs.loc[i, :], local)
+    # Monte Carlo Type 1 - Distributions are applied as perturbations (+/- a multiplier)
+    if mc_type == 'perturbations':
+        if not len(MCinputs) == 0:  # if dictionary is empty, no monte carlo will be performed
+            for i in range(len(MCinputs)):
+                inputs, local = applySensitivity(inputs, MCinputs.loc[i, :], local)
+    # Monte Carlo Type 2 - Apply distributions as values (exact entries passed to function used in model)
+    elif mc_type == 'values':
+        if not len(MCinputs) == 0:  # if dictionary is empty, no monte carlo will be performed
+            for i in range(len(MCinputs)):
+                inputs, local = applyMonteCarlo(inputs, MCinputs.loc[i, :], local)
 
     # Create empty dictionary of temoa outputs
     outputs = getEmptyTemoaDict()
@@ -259,8 +272,11 @@ def processScenarios(scenarioXLSX, scenarioName, local, path):
     # Minimum initial growth
     local['MaxLoan_yrs'] = df.loc['MaxLoan_yrs', scenarioName]
 
-    # Minimum initial growth
+    # Minimum renewable portfolio standard (RPS)
     local['include_RPS'] = df.loc['include_RPS', scenarioName]
+
+    # Emission limit
+    local['include_emission_limit'] = df.loc['include_emission_limit', scenarioName]
 
     # Return to working directory
     os.chdir(workDir)
@@ -324,21 +340,17 @@ def processSystem(inputs, local, outputs):
     # Discount Rate Global
     outputs['GlobalDiscountRate'].append(str(inputs['DiscountRateGlobal'].DiscountRate[0]))
 
-    # Discount Rate Tech
-    for tech, vintage, tech_rate, tech_rate_notes in zip(inputs['DiscountRateTech'].tech,
-                                                         inputs['DiscountRateTech'].vintage,
-                                                         inputs['DiscountRateTech'].tech_rate,
-                                                         inputs['DiscountRateTech'].tech_rate_notes):
-        outputs['DiscountRate'].append((tech, vintage, tech_rate, str(tech_rate_notes)))
-
     # Emission Limit
-    for periods, emis_comm, emis_limit, emis_limit_units, emis_limit_notes in zip(inputs['Emission'].periods,
-                                                                                  inputs['Emission'].emis_comm,
-                                                                                  inputs['Emission'].emis_limit,
-                                                                                  inputs['Emission'].emis_limit_units,
-                                                                                  inputs['Emission'].emis_limit_notes):
-        outputs['EmissionLimit'].append(
-            (periods, str(emis_comm), emis_limit, str(emis_limit_units), str(emis_limit_notes)))
+    if local['include_emission_limit'] == 'Y':
+        for periods, emis_comm, emis_limit, emis_limit_units, emis_limit_notes in zip(inputs['Emission'].periods,
+                                                                                      inputs['Emission'].emis_comm,
+                                                                                      inputs['Emission'].emis_limit,
+                                                                                      inputs[
+                                                                                          'Emission'].emis_limit_units,
+                                                                                      inputs[
+                                                                                          'Emission'].emis_limit_notes):
+            outputs['EmissionLimit'].append(
+                (periods, str(emis_comm), emis_limit, str(emis_limit_units), str(emis_limit_notes)))
 
     # ReserveMargin
     if local['include_reserve_margin'] == 'Y':
@@ -403,6 +415,8 @@ def processPowerPlants(inputs, local, outputs):
         tech['CostInvestIncr'] = inputs['PowerPlantsCosts'].loc[techType, 'CostInvestIncr']
         tech['CostFixedIncr'] = inputs['PowerPlantsCosts'].loc[techType, 'CostFixedIncr']
         tech['CostVariableIncr'] = inputs['PowerPlantsCosts'].loc[techType, 'CostVariableIncr']
+        tech['DiscountRate'] = inputs['PowerPlantsCosts'].loc[techType, 'DiscountRate']
+        tech['Ref_DiscountRate'] = inputs['PowerPlantsCosts'].loc[techType, 'Ref_DiscountRate']
 
         # Constraints
         tech['max_capacity'] = inputs['PowerPlantsConstraints'].loc[
@@ -471,10 +485,12 @@ def processFuels(inputs, local, outputs):
         tech['CostInvestIncr'] = inputs['Fuels'].loc[techType, 'CostInvestIncr']
         tech['CostFixedIncr'] = None
         tech['CostVariableIncr'] = inputs['Fuels'].loc[techType, 'CostVariableIncr']
+        tech['DiscountRate'] = None
+        tech['Ref_DiscountRate'] = None
 
         # Constraints
         tech['max_capacity'] = None
-        tech['max_activity'] = None
+        tech['max_activity'] = inputs['Fuels'].loc[techType, 'MaxActivity']
         tech['ramp_rate'] = None
         tech['Retirement'] = inputs['Fuels'].loc[techType, 'Retirement']
         tech['FirstBuild'] = inputs['Fuels'].loc[techType, 'FirstBuild']
@@ -527,7 +543,7 @@ def processConnections(inputs, local, outputs):
         # Performance
         tech['efficiency'] = 1.0 - inputs['Connections'].loc[techType, 'Loss'] / 100.0
         tech['lifetime'] = inputs['Connections'].loc[techType, 'Lifetime']
-        tech['emission_activity'] = None
+        tech['emission_activity'] = inputs['Connections'].loc[techType, 'EmissionActivity']
         tech['capacity_factor'] = None
 
         # Costs
@@ -538,6 +554,8 @@ def processConnections(inputs, local, outputs):
         tech['CostInvestIncr'] = inputs['Connections'].loc[techType, 'CostInvestIncr']
         tech['CostFixedIncr'] = None
         tech['CostVariableIncr'] = inputs['Connections'].loc[techType, 'CostVariableIncr']
+        tech['DiscountRate'] = None
+        tech['Ref_DiscountRate'] = None
 
         # Constraints
         tech['max_capacity'] = None
@@ -696,6 +714,14 @@ def processTech(inputs, local, outputs, tech):
                         costVar = tech['cost_variable']
                     outputs['CostVariable'].append((str(period), tech['name'], str(vintage), costVar, "M USD/PJ", " "))
 
+    # Discount Rate Tech
+    if goodValue(tech['DiscountRate']):
+        note = ''
+        if goodValue(tech['Ref_DiscountRate']):
+            note = tech['Ref_DiscountRate']
+        for vintage in buildYears:
+            outputs['DiscountRate'].append((tech['name'], str(vintage), tech['DiscountRate'], note))
+
     # Efficiency
     if goodValue(tech['efficiency']):
         for vintage in buildYears:
@@ -733,11 +759,11 @@ def processTech(inputs, local, outputs, tech):
     if tech['sector'] == 'supply':
         outputs['technologies'].append((tech['name'], "r", tech['sector'], "fuels", " "))
 
-        # Connections
+    # Connections
     elif tech['sector'] == 'transport':
         outputs['technologies'].append((tech['name'], "p", tech['sector'], "connections", " "))
 
-        # PowerPlants
+    # PowerPlants
     elif tech['sector'] == 'electric':
         if local['include_baseload'] == "Y" and tech['baseload'] == "Y":
             outputs['tech_baseload'].append((tech['name'],))
@@ -863,7 +889,7 @@ def createSensitivityCases(scenarioXLSX, scenarioName, sensitivityInputs, multip
     count = 0
 
     # Baseline
-    df.loc[count] = ['Baseline', 'Baseline', 'Baseline', 1.0]  # no change
+    df.loc[count] = ['Baseline', 'Baseline', 'Baseline', 0.0]  # no change
     count = count + 1
 
     # Globals
@@ -1006,7 +1032,7 @@ def applySensitivity(inputs, sensitivity, local):
         multiplier = 1.0 + sensitivity['multiplier'] / 100.0
 
         if sensitivity['variable'] == 'DiscountRate':
-            entryName = 'DiscountRate'
+            entryName = 'DiscountRateGlobal'
             entry = inputs[entryName]
             if goodValue(entry.loc[0, 'DiscountRate']):
                 entry.at[0, 'DiscountRate'] = entry.loc[0, 'DiscountRate'] * multiplier
@@ -1027,7 +1053,6 @@ def applySensitivity(inputs, sensitivity, local):
             if goodValue(local['MinGrowthSeed']):
                 local['MinGrowthSeed'] = local['MinGrowthSeed'] * multiplier
 
-
     elif sensitivity['type'] in ['PowerPlants', 'Fuels', 'Connections']:  # Baseline is excluded (no modifications made)
         # -------------------
         # Determine which inputs dictionary entry to modify
@@ -1037,16 +1062,21 @@ def applySensitivity(inputs, sensitivity, local):
             index = 'powerplant'
 
             # PowerPlantsPerformance
-            if sensitivity['variable'] in ['Efficiency', 'ExpectedLifetime', 'CapacityFactor']:
+            if sensitivity['variable'] in ['Efficiency', 'ExpectedLifetime', 'CapacityFactor', 'HeatRate']:
                 entryName = 'PowerPlantsPerformance'
 
             # PowerPlantsCosts
-            elif sensitivity['variable'] in ['CostInvest', 'CostFixed', 'CostVariable']:
+            elif sensitivity['variable'] in ['CostInvest', 'CostInvestIncr', 'CostFixed', 'CostFixedIncr',
+                                             'CostVariable', 'CostVariableIncr', 'DiscountRate']:
                 entryName = 'PowerPlantsCosts'
 
             # PowerPlantsConstraints
-            elif sensitivity['variable'] in ['RampRate', 'MaxCapacity', 'MaxActivity']:
+            elif sensitivity['variable'] in ['RampRate', 'MaxCapacity', 'MaxActivity', 'FirstBuild', 'LastBuild']:
                 entryName = 'PowerPlantsConstraints'
+
+            # PowerPlants
+            elif sensitivity['variable'] in ['CapacityCredit', 'StorageDuration']:
+                entryName = 'PowerPlants'
 
                 # Fuels
         elif sensitivity['type'] == 'Fuels':
@@ -1102,6 +1132,135 @@ def applySensitivity(inputs, sensitivity, local):
 
                 # Set new value
                 entry.at[sensitivity['tech'], 'HeatRate'] = newValue
+
+        # Push updated entry back to inputs dictionary
+        inputs[entryName] = entry
+
+    # -------------------
+    # Return modified dictionary of inputs
+    # -------------------
+    return inputs, local
+
+
+# =============================================================================
+# Apply Monte Carlo - This function inputs the exact values from mc_inputs
+# ============================================================================
+def applyMonteCarlo(inputs, monte_carlo, local):
+    # Treat global parameters differently - only need to modify one value
+    if monte_carlo['type'] == 'Globals':
+
+        if monte_carlo['variable'] == 'DiscountRate':
+            entryName = 'DiscountRate'
+            entry = inputs[entryName]
+            if goodValue(entry.loc[0, 'DiscountRate']):
+                entry.at[0, 'DiscountRate'] = monte_carlo['value']
+                inputs[entryName] = entry
+
+        elif monte_carlo['variable'] == 'ReserveMargin':
+            entryName = 'ReserveMargin'
+            entry = inputs[entryName]
+            if goodValue(entry.loc[0, 'ReserveMargin']):
+                entry.at[0, 'ReserveMargin'] = monte_carlo['value']
+                inputs[entryName] = entry
+
+        elif monte_carlo['variable'] == 'MaxGrowthRate':
+            if goodValue(local['MaxGrowthRate']):
+                local['MaxGrowthRate'] = monte_carlo['value']
+
+        elif monte_carlo['variable'] == 'MinGrowthSeed':
+            if goodValue(local['MinGrowthSeed']):
+                local['MinGrowthSeed'] = monte_carlo['value']
+
+    elif monte_carlo['type'] in ['PowerPlants', 'Fuels', 'Connections']:  # Baseline is excluded (no modifications made)
+        # -------------------
+        # Determine which inputs dictionary entry to modify
+        # -------------------
+        # PowerPlants
+        if monte_carlo['type'] == 'PowerPlants':
+            index = 'powerplant'
+
+            # PowerPlantsPerformance
+            if monte_carlo['variable'] in ['Efficiency', 'ExpectedLifetime', 'CapacityFactor', 'HeatRate']:
+                entryName = 'PowerPlantsPerformance'
+
+            # PowerPlantsCosts
+            elif monte_carlo['variable'] in ['CostInvest', 'CostInvestIncr', 'CostFixed', 'CostFixedIncr',
+                                             'CostVariable', 'CostVariableIncr', 'DiscountRate']:
+                entryName = 'PowerPlantsCosts'
+
+            # PowerPlantsConstraints
+            elif monte_carlo['variable'] in ['RampRate', 'MaxCapacity', 'MaxActivity', 'FirstBuild', 'LastBuild']:
+                entryName = 'PowerPlantsConstraints'
+
+            # PowerPlants
+            elif monte_carlo['variable'] in ['CapacityCredit', 'StorageDuration']:
+                entryName = 'PowerPlants'
+
+            # Fuels
+        elif monte_carlo['type'] == 'Fuels':
+            index = 'fuel'
+            entryName = 'Fuels'
+
+        # Connections
+        elif monte_carlo['type'] == 'Connections':
+            index = 'connection'
+            entryName = 'Connections'
+
+        # -------------------
+        # Apply Multiplier
+        # -------------------
+        # Extract original entry
+        entry = inputs[entryName]
+        if not entry.index.name == index:
+            entry = entry.set_index(index)
+
+        if debug:
+            print(entry)
+
+        # Modify specified value
+        if goodValue(entry.loc[monte_carlo['tech'], monte_carlo['variable']]):  # Ensure that entry can be changed
+            # Calculate updated value
+            newValue = monte_carlo['value']
+
+            # Check values are reasonable
+            if newValue > 100.0 and monte_carlo['variable'] == 'Efficiency':
+                newValue = 100.0
+            elif newValue > 100.0 and monte_carlo['variable'] == 'CapacityFactor':
+                newValue = 100.0
+            elif newValue < 0.0 and monte_carlo['variable'] == 'Loss':
+                newValue = 0.0
+
+            if monte_carlo['variable'] == 'ExpectedLifetime':  # Must be an integer
+                newValue = int(newValue)
+
+            # Set new value
+            entry.at[monte_carlo['tech'], monte_carlo['variable']] = newValue
+
+        # Special cases: if PowerPlant efficiency or heat rate, also apply to the other
+        # (heat rate is inverse of efficiency, so a -1.0 multiplier is applied)
+        if monte_carlo['type'] == 'PowerPlants' and monte_carlo['variable'] == 'Efficiency':
+            if goodValue(entry.loc[monte_carlo['tech'], 'HeatRate']):  # Ensure that entry can be changed
+                # Calculate updated value
+                newValue = 3142.0 / monte_carlo['value']
+
+                # Check values are reasonable
+                if newValue < 3412.0:  # Heat rate corresponding to 100% efficiency
+                    newValue = 3412.0
+
+                # Set new value
+                entry.at[monte_carlo['tech'], 'HeatRate'] = newValue
+
+        elif monte_carlo['type'] == 'PowerPlants' and monte_carlo['variable'] == 'HeatRate':
+            if goodValue(entry.loc[monte_carlo['tech'], 'Efficiency']):  # Ensure that entry can be changed
+                # Calculate updated value
+                newValue = 3412.0 / monte_carlo['value']
+
+                # Check values are reasonable
+                if newValue > 100.0:  # Efficiency cannot be greater than 100%
+                    newValue = 100.0
+
+                # Set new value
+                entry.at[monte_carlo['tech'], 'Efficiency'] = newValue
 
         # Push updated entry back to inputs dictionary
         inputs[entryName] = entry
