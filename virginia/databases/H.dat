@@ -106,11 +106,11 @@ SUB
 DIST_TWR
 DIST_COND
 LOCAL
-COAL_TAX_ON
-DSL_TAX_ON
-MSW_LF_TAX_ON
-OIL_TAX_ON
-NATGAS_TAX_ON
+COAL_TAX_OFF
+DSL_TAX_OFF
+MSW_LF_TAX_OFF
+OIL_TAX_OFF
+NATGAS_TAX_OFF
 ;
 
 set tech_storage := 
@@ -507,11 +507,11 @@ param CapacityToActivity :=
     DIST_TWR         31.54    
     DIST_COND         31.54    
     LOCAL         31.54    
-    COAL_TAX_ON         31.54    
-    DSL_TAX_ON         31.54    
-    MSW_LF_TAX_ON         31.54    
-    OIL_TAX_ON         31.54    
-    NATGAS_TAX_ON         31.54    
+    COAL_TAX_OFF         31.54    
+    DSL_TAX_OFF         31.54    
+    MSW_LF_TAX_OFF         31.54    
+    OIL_TAX_OFF         31.54    
+    NATGAS_TAX_OFF         31.54    
 ;
 
 param GlobalDiscountRate := 
@@ -588,15 +588,6 @@ param EmissionActivity :=
     CO2             ethos             IMPNATGAS         2040         NATGAS         50.3    
     CO2             ethos             IMPNATGAS         2045         NATGAS         50.3    
     CO2             ethos             IMPNATGAS         2050         NATGAS         50.3    
-;
-
-param EmissionLimit := 
-2025         CO2         23800.0    #     None            
-2030         CO2         19600.0    #     None            
-2035         CO2         14700.0    #     None            
-2040         CO2         9800.0    #     None            
-2045         CO2         4900.0    #     None            
-2050         CO2         0.0    #     None            
 ;
 
 param Demand := 
@@ -719,11 +710,11 @@ param LifetimeTech :=
     DIST_TWR         30.0    
     DIST_COND         30.0    
     LOCAL         30.0    
-    COAL_TAX_ON         30.0    
-    DSL_TAX_ON         30.0    
-    MSW_LF_TAX_ON         30.0    
-    OIL_TAX_ON         30.0    
-    NATGAS_TAX_ON         30.0    
+    COAL_TAX_OFF         30.0    
+    DSL_TAX_OFF         30.0    
+    MSW_LF_TAX_OFF         30.0    
+    OIL_TAX_OFF         30.0    
+    NATGAS_TAX_OFF         30.0    
 ;
 
 param LifetimeLoanTech := 
@@ -771,11 +762,11 @@ param LifetimeLoanTech :=
     DIST_TWR         30.0    
     DIST_COND         30.0    
     LOCAL         30.0    
-    COAL_TAX_ON         30.0    
-    DSL_TAX_ON         30.0    
-    MSW_LF_TAX_ON         30.0    
-    OIL_TAX_ON         30.0    
-    NATGAS_TAX_ON         30.0    
+    COAL_TAX_OFF         30.0    
+    DSL_TAX_OFF         30.0    
+    MSW_LF_TAX_OFF         30.0    
+    OIL_TAX_OFF         30.0    
+    NATGAS_TAX_OFF         30.0    
 ;
 
 param CapacityFactorTech := 
@@ -2333,41 +2324,41 @@ param Efficiency :=
     ELC_LOCAL             LOCAL         2040         ELC_DMD         1.0    
     ELC_LOCAL             LOCAL         2045         ELC_DMD         1.0    
     ELC_LOCAL             LOCAL         2050         ELC_DMD         1.0    
-    COAL             COAL_TAX_ON         2018         COAL_TAXED         1.0    
-    COAL             COAL_TAX_ON         2025         COAL_TAXED         1.0    
-    COAL             COAL_TAX_ON         2030         COAL_TAXED         1.0    
-    COAL             COAL_TAX_ON         2035         COAL_TAXED         1.0    
-    COAL             COAL_TAX_ON         2040         COAL_TAXED         1.0    
-    COAL             COAL_TAX_ON         2045         COAL_TAXED         1.0    
-    COAL             COAL_TAX_ON         2050         COAL_TAXED         1.0    
-    DSL             DSL_TAX_ON         2018         DSL_TAXED         1.0    
-    DSL             DSL_TAX_ON         2025         DSL_TAXED         1.0    
-    DSL             DSL_TAX_ON         2030         DSL_TAXED         1.0    
-    DSL             DSL_TAX_ON         2035         DSL_TAXED         1.0    
-    DSL             DSL_TAX_ON         2040         DSL_TAXED         1.0    
-    DSL             DSL_TAX_ON         2045         DSL_TAXED         1.0    
-    DSL             DSL_TAX_ON         2050         DSL_TAXED         1.0    
-    MSW_LF             MSW_LF_TAX_ON         2018         MSW_LF_TAXED         1.0    
-    MSW_LF             MSW_LF_TAX_ON         2025         MSW_LF_TAXED         1.0    
-    MSW_LF             MSW_LF_TAX_ON         2030         MSW_LF_TAXED         1.0    
-    MSW_LF             MSW_LF_TAX_ON         2035         MSW_LF_TAXED         1.0    
-    MSW_LF             MSW_LF_TAX_ON         2040         MSW_LF_TAXED         1.0    
-    MSW_LF             MSW_LF_TAX_ON         2045         MSW_LF_TAXED         1.0    
-    MSW_LF             MSW_LF_TAX_ON         2050         MSW_LF_TAXED         1.0    
-    OIL             OIL_TAX_ON         2018         OIL_TAXED         1.0    
-    OIL             OIL_TAX_ON         2025         OIL_TAXED         1.0    
-    OIL             OIL_TAX_ON         2030         OIL_TAXED         1.0    
-    OIL             OIL_TAX_ON         2035         OIL_TAXED         1.0    
-    OIL             OIL_TAX_ON         2040         OIL_TAXED         1.0    
-    OIL             OIL_TAX_ON         2045         OIL_TAXED         1.0    
-    OIL             OIL_TAX_ON         2050         OIL_TAXED         1.0    
-    NATGAS             NATGAS_TAX_ON         2018         NATGAS_TAXED         1.0    
-    NATGAS             NATGAS_TAX_ON         2025         NATGAS_TAXED         1.0    
-    NATGAS             NATGAS_TAX_ON         2030         NATGAS_TAXED         1.0    
-    NATGAS             NATGAS_TAX_ON         2035         NATGAS_TAXED         1.0    
-    NATGAS             NATGAS_TAX_ON         2040         NATGAS_TAXED         1.0    
-    NATGAS             NATGAS_TAX_ON         2045         NATGAS_TAXED         1.0    
-    NATGAS             NATGAS_TAX_ON         2050         NATGAS_TAXED         1.0    
+    COAL             COAL_TAX_OFF         2018         COAL_TAXED         1.0    
+    COAL             COAL_TAX_OFF         2025         COAL_TAXED         1.0    
+    COAL             COAL_TAX_OFF         2030         COAL_TAXED         1.0    
+    COAL             COAL_TAX_OFF         2035         COAL_TAXED         1.0    
+    COAL             COAL_TAX_OFF         2040         COAL_TAXED         1.0    
+    COAL             COAL_TAX_OFF         2045         COAL_TAXED         1.0    
+    COAL             COAL_TAX_OFF         2050         COAL_TAXED         1.0    
+    DSL             DSL_TAX_OFF         2018         DSL_TAXED         1.0    
+    DSL             DSL_TAX_OFF         2025         DSL_TAXED         1.0    
+    DSL             DSL_TAX_OFF         2030         DSL_TAXED         1.0    
+    DSL             DSL_TAX_OFF         2035         DSL_TAXED         1.0    
+    DSL             DSL_TAX_OFF         2040         DSL_TAXED         1.0    
+    DSL             DSL_TAX_OFF         2045         DSL_TAXED         1.0    
+    DSL             DSL_TAX_OFF         2050         DSL_TAXED         1.0    
+    MSW_LF             MSW_LF_TAX_OFF         2018         MSW_LF_TAXED         1.0    
+    MSW_LF             MSW_LF_TAX_OFF         2025         MSW_LF_TAXED         1.0    
+    MSW_LF             MSW_LF_TAX_OFF         2030         MSW_LF_TAXED         1.0    
+    MSW_LF             MSW_LF_TAX_OFF         2035         MSW_LF_TAXED         1.0    
+    MSW_LF             MSW_LF_TAX_OFF         2040         MSW_LF_TAXED         1.0    
+    MSW_LF             MSW_LF_TAX_OFF         2045         MSW_LF_TAXED         1.0    
+    MSW_LF             MSW_LF_TAX_OFF         2050         MSW_LF_TAXED         1.0    
+    OIL             OIL_TAX_OFF         2018         OIL_TAXED         1.0    
+    OIL             OIL_TAX_OFF         2025         OIL_TAXED         1.0    
+    OIL             OIL_TAX_OFF         2030         OIL_TAXED         1.0    
+    OIL             OIL_TAX_OFF         2035         OIL_TAXED         1.0    
+    OIL             OIL_TAX_OFF         2040         OIL_TAXED         1.0    
+    OIL             OIL_TAX_OFF         2045         OIL_TAXED         1.0    
+    OIL             OIL_TAX_OFF         2050         OIL_TAXED         1.0    
+    NATGAS             NATGAS_TAX_OFF         2018         NATGAS_TAXED         1.0    
+    NATGAS             NATGAS_TAX_OFF         2025         NATGAS_TAXED         1.0    
+    NATGAS             NATGAS_TAX_OFF         2030         NATGAS_TAXED         1.0    
+    NATGAS             NATGAS_TAX_OFF         2035         NATGAS_TAXED         1.0    
+    NATGAS             NATGAS_TAX_OFF         2040         NATGAS_TAXED         1.0    
+    NATGAS             NATGAS_TAX_OFF         2045         NATGAS_TAXED         1.0    
+    NATGAS             NATGAS_TAX_OFF         2050         NATGAS_TAXED         1.0    
 ;
 
 param ExistingCapacity := 
@@ -2530,41 +2521,41 @@ param CostInvest :=
     LOCAL         2040     0.0    
     LOCAL         2045     0.0    
     LOCAL         2050     0.0    
-    COAL_TAX_ON         2018     0.0    
-    COAL_TAX_ON         2025     0.0    
-    COAL_TAX_ON         2030     0.0    
-    COAL_TAX_ON         2035     0.0    
-    COAL_TAX_ON         2040     0.0    
-    COAL_TAX_ON         2045     0.0    
-    COAL_TAX_ON         2050     0.0    
-    DSL_TAX_ON         2018     0.0    
-    DSL_TAX_ON         2025     0.0    
-    DSL_TAX_ON         2030     0.0    
-    DSL_TAX_ON         2035     0.0    
-    DSL_TAX_ON         2040     0.0    
-    DSL_TAX_ON         2045     0.0    
-    DSL_TAX_ON         2050     0.0    
-    MSW_LF_TAX_ON         2018     0.0    
-    MSW_LF_TAX_ON         2025     0.0    
-    MSW_LF_TAX_ON         2030     0.0    
-    MSW_LF_TAX_ON         2035     0.0    
-    MSW_LF_TAX_ON         2040     0.0    
-    MSW_LF_TAX_ON         2045     0.0    
-    MSW_LF_TAX_ON         2050     0.0    
-    OIL_TAX_ON         2018     0.0    
-    OIL_TAX_ON         2025     0.0    
-    OIL_TAX_ON         2030     0.0    
-    OIL_TAX_ON         2035     0.0    
-    OIL_TAX_ON         2040     0.0    
-    OIL_TAX_ON         2045     0.0    
-    OIL_TAX_ON         2050     0.0    
-    NATGAS_TAX_ON         2018     0.0    
-    NATGAS_TAX_ON         2025     0.0    
-    NATGAS_TAX_ON         2030     0.0    
-    NATGAS_TAX_ON         2035     0.0    
-    NATGAS_TAX_ON         2040     0.0    
-    NATGAS_TAX_ON         2045     0.0    
-    NATGAS_TAX_ON         2050     0.0    
+    COAL_TAX_OFF         2018     0.0    
+    COAL_TAX_OFF         2025     0.0    
+    COAL_TAX_OFF         2030     0.0    
+    COAL_TAX_OFF         2035     0.0    
+    COAL_TAX_OFF         2040     0.0    
+    COAL_TAX_OFF         2045     0.0    
+    COAL_TAX_OFF         2050     0.0    
+    DSL_TAX_OFF         2018     0.0    
+    DSL_TAX_OFF         2025     0.0    
+    DSL_TAX_OFF         2030     0.0    
+    DSL_TAX_OFF         2035     0.0    
+    DSL_TAX_OFF         2040     0.0    
+    DSL_TAX_OFF         2045     0.0    
+    DSL_TAX_OFF         2050     0.0    
+    MSW_LF_TAX_OFF         2018     0.0    
+    MSW_LF_TAX_OFF         2025     0.0    
+    MSW_LF_TAX_OFF         2030     0.0    
+    MSW_LF_TAX_OFF         2035     0.0    
+    MSW_LF_TAX_OFF         2040     0.0    
+    MSW_LF_TAX_OFF         2045     0.0    
+    MSW_LF_TAX_OFF         2050     0.0    
+    OIL_TAX_OFF         2018     0.0    
+    OIL_TAX_OFF         2025     0.0    
+    OIL_TAX_OFF         2030     0.0    
+    OIL_TAX_OFF         2035     0.0    
+    OIL_TAX_OFF         2040     0.0    
+    OIL_TAX_OFF         2045     0.0    
+    OIL_TAX_OFF         2050     0.0    
+    NATGAS_TAX_OFF         2018     0.0    
+    NATGAS_TAX_OFF         2025     0.0    
+    NATGAS_TAX_OFF         2030     0.0    
+    NATGAS_TAX_OFF         2035     0.0    
+    NATGAS_TAX_OFF         2040     0.0    
+    NATGAS_TAX_OFF         2045     0.0    
+    NATGAS_TAX_OFF         2050     0.0    
 ;
 
 param CostFixed := 
@@ -3792,141 +3783,141 @@ param CostVariable :=
 2050         LOCAL         2040     0.0    
 2050         LOCAL         2045     0.0    
 2050         LOCAL         2050     0.0    
-2018         COAL_TAX_ON         2018     0.5069757    
-2025         COAL_TAX_ON         2018     1.8165855943065596    
-2025         COAL_TAX_ON         2025     1.8165855943065596    
-2030         COAL_TAX_ON         2018     4.520246266024897    
-2030         COAL_TAX_ON         2025     4.520246266024897    
-2030         COAL_TAX_ON         2030     4.520246266024897    
-2035         COAL_TAX_ON         2018     11.24781918867507    
-2035         COAL_TAX_ON         2025     11.24781918867507    
-2035         COAL_TAX_ON         2030     11.24781918867507    
-2035         COAL_TAX_ON         2035     11.24781918867507    
-2040         COAL_TAX_ON         2018     27.988173443563948    
-2040         COAL_TAX_ON         2025     27.988173443563948    
-2040         COAL_TAX_ON         2030     27.988173443563948    
-2040         COAL_TAX_ON         2035     27.988173443563948    
-2040         COAL_TAX_ON         2040     27.988173443563948    
-2045         COAL_TAX_ON         2018     69.64353174308903    
-2045         COAL_TAX_ON         2025     69.64353174308903    
-2045         COAL_TAX_ON         2030     69.64353174308903    
-2045         COAL_TAX_ON         2035     69.64353174308903    
-2045         COAL_TAX_ON         2040     69.64353174308903    
-2045         COAL_TAX_ON         2045     69.64353174308903    
-2050         COAL_TAX_ON         2025     173.29539290696326    
-2050         COAL_TAX_ON         2030     173.29539290696326    
-2050         COAL_TAX_ON         2035     173.29539290696326    
-2050         COAL_TAX_ON         2040     173.29539290696326    
-2050         COAL_TAX_ON         2045     173.29539290696326    
-2050         COAL_TAX_ON         2050     173.29539290696326    
-2018         DSL_TAX_ON         2018     0.3790677    
-2025         DSL_TAX_ON         2018     1.3582681045401597    
-2025         DSL_TAX_ON         2025     1.3582681045401597    
-2030         DSL_TAX_ON         2018     3.3798056898893694    
-2030         DSL_TAX_ON         2025     3.3798056898893694    
-2030         DSL_TAX_ON         2030     3.3798056898893694    
-2035         DSL_TAX_ON         2018     8.410038094265515    
-2035         DSL_TAX_ON         2025     8.410038094265515    
-2035         DSL_TAX_ON         2030     8.410038094265515    
-2035         DSL_TAX_ON         2035     8.410038094265515    
-2040         DSL_TAX_ON         2018     20.92686599072276    
-2040         DSL_TAX_ON         2025     20.92686599072276    
-2040         DSL_TAX_ON         2030     20.92686599072276    
-2040         DSL_TAX_ON         2035     20.92686599072276    
-2040         DSL_TAX_ON         2040     20.92686599072276    
-2045         DSL_TAX_ON         2018     52.07273918203526    
-2045         DSL_TAX_ON         2025     52.07273918203526    
-2045         DSL_TAX_ON         2030     52.07273918203526    
-2045         DSL_TAX_ON         2035     52.07273918203526    
-2045         DSL_TAX_ON         2040     52.07273918203526    
-2045         DSL_TAX_ON         2045     52.07273918203526    
-2050         DSL_TAX_ON         2025     129.57363836144194    
-2050         DSL_TAX_ON         2030     129.57363836144194    
-2050         DSL_TAX_ON         2035     129.57363836144194    
-2050         DSL_TAX_ON         2040     129.57363836144194    
-2050         DSL_TAX_ON         2045     129.57363836144194    
-2050         DSL_TAX_ON         2050     129.57363836144194    
-2018         MSW_LF_TAX_ON         2018     0.0    
-2025         MSW_LF_TAX_ON         2018     0.0    
-2025         MSW_LF_TAX_ON         2025     0.0    
-2030         MSW_LF_TAX_ON         2018     0.0    
-2030         MSW_LF_TAX_ON         2025     0.0    
-2030         MSW_LF_TAX_ON         2030     0.0    
-2035         MSW_LF_TAX_ON         2018     0.0    
-2035         MSW_LF_TAX_ON         2025     0.0    
-2035         MSW_LF_TAX_ON         2030     0.0    
-2035         MSW_LF_TAX_ON         2035     0.0    
-2040         MSW_LF_TAX_ON         2018     0.0    
-2040         MSW_LF_TAX_ON         2025     0.0    
-2040         MSW_LF_TAX_ON         2030     0.0    
-2040         MSW_LF_TAX_ON         2035     0.0    
-2040         MSW_LF_TAX_ON         2040     0.0    
-2045         MSW_LF_TAX_ON         2018     0.0    
-2045         MSW_LF_TAX_ON         2025     0.0    
-2045         MSW_LF_TAX_ON         2030     0.0    
-2045         MSW_LF_TAX_ON         2035     0.0    
-2045         MSW_LF_TAX_ON         2040     0.0    
-2045         MSW_LF_TAX_ON         2045     0.0    
-2050         MSW_LF_TAX_ON         2025     0.0    
-2050         MSW_LF_TAX_ON         2030     0.0    
-2050         MSW_LF_TAX_ON         2035     0.0    
-2050         MSW_LF_TAX_ON         2040     0.0    
-2050         MSW_LF_TAX_ON         2045     0.0    
-2050         MSW_LF_TAX_ON         2050     0.0    
-2018         OIL_TAX_ON         2018     0.3790677    
-2025         OIL_TAX_ON         2018     1.3582681045401597    
-2025         OIL_TAX_ON         2025     1.3582681045401597    
-2030         OIL_TAX_ON         2018     3.3798056898893694    
-2030         OIL_TAX_ON         2025     3.3798056898893694    
-2030         OIL_TAX_ON         2030     3.3798056898893694    
-2035         OIL_TAX_ON         2018     8.410038094265515    
-2035         OIL_TAX_ON         2025     8.410038094265515    
-2035         OIL_TAX_ON         2030     8.410038094265515    
-2035         OIL_TAX_ON         2035     8.410038094265515    
-2040         OIL_TAX_ON         2018     20.92686599072276    
-2040         OIL_TAX_ON         2025     20.92686599072276    
-2040         OIL_TAX_ON         2030     20.92686599072276    
-2040         OIL_TAX_ON         2035     20.92686599072276    
-2040         OIL_TAX_ON         2040     20.92686599072276    
-2045         OIL_TAX_ON         2018     52.07273918203526    
-2045         OIL_TAX_ON         2025     52.07273918203526    
-2045         OIL_TAX_ON         2030     52.07273918203526    
-2045         OIL_TAX_ON         2035     52.07273918203526    
-2045         OIL_TAX_ON         2040     52.07273918203526    
-2045         OIL_TAX_ON         2045     52.07273918203526    
-2050         OIL_TAX_ON         2025     129.57363836144194    
-2050         OIL_TAX_ON         2030     129.57363836144194    
-2050         OIL_TAX_ON         2035     129.57363836144194    
-2050         OIL_TAX_ON         2040     129.57363836144194    
-2050         OIL_TAX_ON         2045     129.57363836144194    
-2050         OIL_TAX_ON         2050     129.57363836144194    
-2018         NATGAS_TAX_ON         2018     0.282183    
-2025         NATGAS_TAX_ON         2018     1.0111127076864    
-2025         NATGAS_TAX_ON         2025     1.0111127076864    
-2030         NATGAS_TAX_ON         2018     2.5159719727902217    
-2030         NATGAS_TAX_ON         2025     2.5159719727902217    
-2030         NATGAS_TAX_ON         2030     2.5159719727902217    
-2035         NATGAS_TAX_ON         2018     6.260543379333363    
-2035         NATGAS_TAX_ON         2025     6.260543379333363    
-2035         NATGAS_TAX_ON         2030     6.260543379333363    
-2035         NATGAS_TAX_ON         2035     6.260543379333363    
-2040         NATGAS_TAX_ON         2018     15.578235301662794    
-2040         NATGAS_TAX_ON         2025     15.578235301662794    
-2040         NATGAS_TAX_ON         2030     15.578235301662794    
-2040         NATGAS_TAX_ON         2035     15.578235301662794    
-2040         NATGAS_TAX_ON         2040     15.578235301662794    
-2045         NATGAS_TAX_ON         2018     38.763634465833555    
-2045         NATGAS_TAX_ON         2025     38.763634465833555    
-2045         NATGAS_TAX_ON         2030     38.763634465833555    
-2045         NATGAS_TAX_ON         2035     38.763634465833555    
-2045         NATGAS_TAX_ON         2040     38.763634465833555    
-2045         NATGAS_TAX_ON         2045     38.763634465833555    
-2050         NATGAS_TAX_ON         2025     96.45632691402294    
-2050         NATGAS_TAX_ON         2030     96.45632691402294    
-2050         NATGAS_TAX_ON         2035     96.45632691402294    
-2050         NATGAS_TAX_ON         2040     96.45632691402294    
-2050         NATGAS_TAX_ON         2045     96.45632691402294    
-2050         NATGAS_TAX_ON         2050     96.45632691402294    
+2018         COAL_TAX_OFF         2018     0.0    
+2025         COAL_TAX_OFF         2018     0.0    
+2025         COAL_TAX_OFF         2025     0.0    
+2030         COAL_TAX_OFF         2018     0.0    
+2030         COAL_TAX_OFF         2025     0.0    
+2030         COAL_TAX_OFF         2030     0.0    
+2035         COAL_TAX_OFF         2018     0.0    
+2035         COAL_TAX_OFF         2025     0.0    
+2035         COAL_TAX_OFF         2030     0.0    
+2035         COAL_TAX_OFF         2035     0.0    
+2040         COAL_TAX_OFF         2018     0.0    
+2040         COAL_TAX_OFF         2025     0.0    
+2040         COAL_TAX_OFF         2030     0.0    
+2040         COAL_TAX_OFF         2035     0.0    
+2040         COAL_TAX_OFF         2040     0.0    
+2045         COAL_TAX_OFF         2018     0.0    
+2045         COAL_TAX_OFF         2025     0.0    
+2045         COAL_TAX_OFF         2030     0.0    
+2045         COAL_TAX_OFF         2035     0.0    
+2045         COAL_TAX_OFF         2040     0.0    
+2045         COAL_TAX_OFF         2045     0.0    
+2050         COAL_TAX_OFF         2025     0.0    
+2050         COAL_TAX_OFF         2030     0.0    
+2050         COAL_TAX_OFF         2035     0.0    
+2050         COAL_TAX_OFF         2040     0.0    
+2050         COAL_TAX_OFF         2045     0.0    
+2050         COAL_TAX_OFF         2050     0.0    
+2018         DSL_TAX_OFF         2018     0.0    
+2025         DSL_TAX_OFF         2018     0.0    
+2025         DSL_TAX_OFF         2025     0.0    
+2030         DSL_TAX_OFF         2018     0.0    
+2030         DSL_TAX_OFF         2025     0.0    
+2030         DSL_TAX_OFF         2030     0.0    
+2035         DSL_TAX_OFF         2018     0.0    
+2035         DSL_TAX_OFF         2025     0.0    
+2035         DSL_TAX_OFF         2030     0.0    
+2035         DSL_TAX_OFF         2035     0.0    
+2040         DSL_TAX_OFF         2018     0.0    
+2040         DSL_TAX_OFF         2025     0.0    
+2040         DSL_TAX_OFF         2030     0.0    
+2040         DSL_TAX_OFF         2035     0.0    
+2040         DSL_TAX_OFF         2040     0.0    
+2045         DSL_TAX_OFF         2018     0.0    
+2045         DSL_TAX_OFF         2025     0.0    
+2045         DSL_TAX_OFF         2030     0.0    
+2045         DSL_TAX_OFF         2035     0.0    
+2045         DSL_TAX_OFF         2040     0.0    
+2045         DSL_TAX_OFF         2045     0.0    
+2050         DSL_TAX_OFF         2025     0.0    
+2050         DSL_TAX_OFF         2030     0.0    
+2050         DSL_TAX_OFF         2035     0.0    
+2050         DSL_TAX_OFF         2040     0.0    
+2050         DSL_TAX_OFF         2045     0.0    
+2050         DSL_TAX_OFF         2050     0.0    
+2018         MSW_LF_TAX_OFF         2018     0.0    
+2025         MSW_LF_TAX_OFF         2018     0.0    
+2025         MSW_LF_TAX_OFF         2025     0.0    
+2030         MSW_LF_TAX_OFF         2018     0.0    
+2030         MSW_LF_TAX_OFF         2025     0.0    
+2030         MSW_LF_TAX_OFF         2030     0.0    
+2035         MSW_LF_TAX_OFF         2018     0.0    
+2035         MSW_LF_TAX_OFF         2025     0.0    
+2035         MSW_LF_TAX_OFF         2030     0.0    
+2035         MSW_LF_TAX_OFF         2035     0.0    
+2040         MSW_LF_TAX_OFF         2018     0.0    
+2040         MSW_LF_TAX_OFF         2025     0.0    
+2040         MSW_LF_TAX_OFF         2030     0.0    
+2040         MSW_LF_TAX_OFF         2035     0.0    
+2040         MSW_LF_TAX_OFF         2040     0.0    
+2045         MSW_LF_TAX_OFF         2018     0.0    
+2045         MSW_LF_TAX_OFF         2025     0.0    
+2045         MSW_LF_TAX_OFF         2030     0.0    
+2045         MSW_LF_TAX_OFF         2035     0.0    
+2045         MSW_LF_TAX_OFF         2040     0.0    
+2045         MSW_LF_TAX_OFF         2045     0.0    
+2050         MSW_LF_TAX_OFF         2025     0.0    
+2050         MSW_LF_TAX_OFF         2030     0.0    
+2050         MSW_LF_TAX_OFF         2035     0.0    
+2050         MSW_LF_TAX_OFF         2040     0.0    
+2050         MSW_LF_TAX_OFF         2045     0.0    
+2050         MSW_LF_TAX_OFF         2050     0.0    
+2018         OIL_TAX_OFF         2018     0.0    
+2025         OIL_TAX_OFF         2018     0.0    
+2025         OIL_TAX_OFF         2025     0.0    
+2030         OIL_TAX_OFF         2018     0.0    
+2030         OIL_TAX_OFF         2025     0.0    
+2030         OIL_TAX_OFF         2030     0.0    
+2035         OIL_TAX_OFF         2018     0.0    
+2035         OIL_TAX_OFF         2025     0.0    
+2035         OIL_TAX_OFF         2030     0.0    
+2035         OIL_TAX_OFF         2035     0.0    
+2040         OIL_TAX_OFF         2018     0.0    
+2040         OIL_TAX_OFF         2025     0.0    
+2040         OIL_TAX_OFF         2030     0.0    
+2040         OIL_TAX_OFF         2035     0.0    
+2040         OIL_TAX_OFF         2040     0.0    
+2045         OIL_TAX_OFF         2018     0.0    
+2045         OIL_TAX_OFF         2025     0.0    
+2045         OIL_TAX_OFF         2030     0.0    
+2045         OIL_TAX_OFF         2035     0.0    
+2045         OIL_TAX_OFF         2040     0.0    
+2045         OIL_TAX_OFF         2045     0.0    
+2050         OIL_TAX_OFF         2025     0.0    
+2050         OIL_TAX_OFF         2030     0.0    
+2050         OIL_TAX_OFF         2035     0.0    
+2050         OIL_TAX_OFF         2040     0.0    
+2050         OIL_TAX_OFF         2045     0.0    
+2050         OIL_TAX_OFF         2050     0.0    
+2018         NATGAS_TAX_OFF         2018     0.0    
+2025         NATGAS_TAX_OFF         2018     0.0    
+2025         NATGAS_TAX_OFF         2025     0.0    
+2030         NATGAS_TAX_OFF         2018     0.0    
+2030         NATGAS_TAX_OFF         2025     0.0    
+2030         NATGAS_TAX_OFF         2030     0.0    
+2035         NATGAS_TAX_OFF         2018     0.0    
+2035         NATGAS_TAX_OFF         2025     0.0    
+2035         NATGAS_TAX_OFF         2030     0.0    
+2035         NATGAS_TAX_OFF         2035     0.0    
+2040         NATGAS_TAX_OFF         2018     0.0    
+2040         NATGAS_TAX_OFF         2025     0.0    
+2040         NATGAS_TAX_OFF         2030     0.0    
+2040         NATGAS_TAX_OFF         2035     0.0    
+2040         NATGAS_TAX_OFF         2040     0.0    
+2045         NATGAS_TAX_OFF         2018     0.0    
+2045         NATGAS_TAX_OFF         2025     0.0    
+2045         NATGAS_TAX_OFF         2030     0.0    
+2045         NATGAS_TAX_OFF         2035     0.0    
+2045         NATGAS_TAX_OFF         2040     0.0    
+2045         NATGAS_TAX_OFF         2045     0.0    
+2050         NATGAS_TAX_OFF         2025     0.0    
+2050         NATGAS_TAX_OFF         2030     0.0    
+2050         NATGAS_TAX_OFF         2035     0.0    
+2050         NATGAS_TAX_OFF         2040     0.0    
+2050         NATGAS_TAX_OFF         2045     0.0    
+2050         NATGAS_TAX_OFF         2050     0.0    
 ;
 
 param RampUp := 

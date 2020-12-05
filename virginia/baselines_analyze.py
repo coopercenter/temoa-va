@@ -7,7 +7,7 @@ import temoatools as tt
 
 onlySimple = False
 folder = os.getcwd() + '/databases'
-dbs = ["A.sqlite", "B.sqlite"]
+dbs = ["A.sqlite", "B.sqlite", "C.sqlite", "D.sqlite", "E.sqlite", "F.sqlite", "G.sqlite", "H.sqlite"]
 
 createPlots = 'Y'  # Create default plots
 saveData = 'Y'  # Save data as a csv or xls

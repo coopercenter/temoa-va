@@ -590,15 +590,6 @@ param EmissionActivity :=
     CO2             ethos             IMPNATGAS         2050         NATGAS         50.3    
 ;
 
-param EmissionLimit := 
-2025         CO2         23800.0    #     None            
-2030         CO2         19600.0    #     None            
-2035         CO2         14700.0    #     None            
-2040         CO2         9800.0    #     None            
-2045         CO2         4900.0    #     None            
-2050         CO2         0.0    #     None            
-;
-
 param Demand := 
 2018         ELC_DMD         343.8    
 2025         ELC_DMD         461.4    
