@@ -29,7 +29,7 @@ if __name__ == '__main__':
     project_path = Path('/Users/rogerzhu/Documents/temoa/temoa-va/virginia')  # Path('/home/jab6ft/temoa/project/baselines')
     modelInputs_XLSX_list = ['data_virginia.xlsx']
     scenarioInputs = 'scenarios_multiple.xlsx'
-    scenarioNames_list = [['A' , 'B' , 'C' , 'D' , 'E' , 'F' , 'G' , 'H']]
+    scenarioNames_list = [['A' , 'B' , 'C' , 'D']]
     ncpus = 8  # int(os.getenv('NUM_PROCS'))
     solver = ''  # 'gurobi'
 

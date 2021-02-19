@@ -7,9 +7,9 @@ import temoatools as tt
 
 onlySimple = False
 folder = os.getcwd() + '/databases'
-dbs = ["A.sqlite", "B.sqlite", "C.sqlite", "D.sqlite", "E.sqlite", "F.sqlite", "G.sqlite", "H.sqlite"]
+dbs = ["A.sqlite", "B.sqlite", "C.sqlite", "D.sqlite"]
 
-createPlots = 'Y'  # Create default plots
+createPlots = 'N'  # Create default plots
 saveData = 'Y'  # Save data as a csv or xls
 sectorName = 'electric'  # Name of sector to be analyzed
 
